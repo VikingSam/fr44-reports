@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR44 &amp; SR22 Experts - Daily Report - March 23, 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #16213e, #0f3460);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+        }
+        
+        .data-notice {
+            background: rgba(243, 156, 18, 0.15);
+            border: 1px solid rgba(243, 156, 18, 0.4);
+            border-left: 4px solid #f39c12;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            color: #f39c12;
+            font-size: 0.95rem;
+        }
+        .data-notice strong { color: #f1c40f; }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .spend { color: #e74c3c; }
+        .clicks { color: #3498db; }
+        .conversions { color: #27ae60; }
+        .cpa { color: #f39c12; }
+        .ctr { color: #9b59b6; }
+        .leads-metric { color: #00d4ff; }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00d4ff;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        th {
+            background: #2c3e50;
+            color: #00d4ff;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        tr:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .good-ctr {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .poor-ctr {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .good-conversions {
+            background: rgba(39, 174, 96, 0.2);
+            color: #2ecc71;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+        
+        .no-conversions {
+            color: #95a5a6;
+        }
+        
+        .high-cost {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .low-cost {
+            color: #27ae60;
+        }
+        
+        .top-performer {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid #27ae60;
+        }
+        
+        .poor-performer {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .hourly-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .hour-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hour-time {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 8px;
+        }
+        
+        .hour-metrics {
+            font-size: 0.8rem;
+            color: #bdc3c7;
+        }
+
+        /* Lead response */
+        .lead-summary-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .lead-card {
+            background: #111118;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .lead-n { font-size: 2.2rem; font-weight: 800; color: #00d4ff; }
+        .lead-l { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: #7b7b86; margin-top: 4px; }
+        .pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .pill-yes { background: rgba(52,211,153,.18); color: #bff3df; }
+        .pill-no  { background: rgba(255,107,53,.18); color: #ffb08c; }
+        .pill-sms { background: rgba(129,140,248,.18); color: #c7ccff; }
+        .pill-email { background: rgba(96,165,250,.18); color: #bfe0ff; }
+        
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .logo { font-size: 2rem; }
+            .date { font-size: 1.2rem; }
+            .dashboard { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .metric-value { font-size: 2rem; }
+            .section { padding: 20px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            .lead-summary-cards { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 1. HEADER -->
+        <div class="header">
+            <div class="logo">FR44 &amp; SR22 EXPERTS</div>
+            <div class="date">March 23, 2026 — Daily Report</div>
+            <div class="subtitle">AdWords Performance Analytics</div>
+        </div>
+
+        <div class="data-notice">
+            ⚠️ <strong>Note:</strong> AdWords API pulled <strong>March 22, 2026</strong> data (sync lag — 1 day behind). Lead &amp; call data is live for March 23.
+        </div>
+
+        <!-- 2. SUMMARY DASHBOARD -->
+        <div class="dashboard">
+            <div class="metric-card">
+                <div class="metric-value spend">$3.28</div>
+                <div class="metric-label">Total Spend</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value clicks">2</div>
+                <div class="metric-label">Total Clicks</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value conversions">0</div>
+                <div class="metric-label">Conversions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value cpa">—</div>
+                <div class="metric-label">Cost Per Acquisition</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value ctr">11.76%</div>
+                <div class="metric-label">Click Through Rate</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value leads-metric">293</div>
+                <div class="metric-label">Radius Leads (Mar 23)</div>
+            </div>
+        </div>
+
+        <!-- 3. CAMPAIGN OVERVIEW -->
+        <div class="section">
+            <h2 class="section-title">Campaign Overview <span style="font-size:0.8rem;color:#f39c12;font-weight:normal;">(Mar 22 data — sync lag)</span></h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campaign Name</th>
+                            <th>Status</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                            <th>CTR</th>
+                            <th>Avg CPC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>FR44 - Landing Page - Claude</td>
+                            <td><span style="color: #27ae60;">Enabled</span></td>
+                            <td>15</td>
+                            <td>1</td>
+                            <td class="low-cost">$1.19</td>
+                            <td class="no-conversions">0</td>
+                            <td class="good-ctr">6.67%</td>
+                            <td>$1.19</td>
+                        </tr>
+                        <tr>
+                            <td>SR22 - Florida</td>
+                            <td><span style="color: #27ae60;">Enabled</span></td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="low-cost">$2.09</td>
+                            <td class="no-conversions">0</td>
+                            <td class="good-ctr">50.00%</td>
+                            <td>$2.09</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 4. TOP KEYWORDS PERFORMANCE -->
+        <div class="section">
+            <h2 class="section-title">Top Keywords Performance <span style="font-size:0.8rem;color:#f39c12;font-weight:normal;">(Mar 22 data — sync lag)</span></h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th>Ad Group</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                            <th>CTR</th>
+                            <th>Avg CPC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>fr44 without a car</td>
+                            <td>Non-Owner FR44</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="low-cost">$1.19</td>
+                            <td class="no-conversions">0</td>
+                            <td class="good-ctr">50.00%</td>
+                            <td>$1.19</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td>sr22 insurance florida</td>
+                            <td>SR22 Florida - High Intent</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="low-cost">$2.09</td>
+                            <td class="no-conversions">0</td>
+                            <td class="good-ctr">50.00%</td>
+                            <td>$2.09</td>
+                        </tr>
+                        <tr>
+                            <td>non owner fr44 insurance</td>
+                            <td>Non-Owner FR44</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">0.00%</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>non owner fr44 insurance florida</td>
+                            <td>Non-Owner FR44</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">0.00%</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>fr44 insurance</td>
+                            <td>FR44 Owner</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">0.00%</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>fr44 insurance florida</td>
+                            <td>FR44 Owner</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">0.00%</td>
+                            <td>$0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. HOURLY PERFORMANCE -->
+        <div class="section">
+            <h2 class="section-title">Hourly Performance <span style="font-size:0.8rem;color:#f39c12;font-weight:normal;">(Mar 22 data — sync lag)</span></h2>
+            <div class="hourly-chart">
+                <div class="hour-card">
+                    <div class="hour-time">9 AM</div>
+                    <div class="hour-metrics">3 impressions<br>0 clicks<br>$0<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">10 AM</div>
+                    <div class="hour-metrics">3 impressions<br>0 clicks<br>$0<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">11 AM</div>
+                    <div class="hour-metrics">8 impressions<br>0 clicks<br>$0<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card" style="border-color: rgba(0,212,255,0.4);">
+                    <div class="hour-time">12 PM</div>
+                    <div class="hour-metrics">FR44: 1 click $1.19<br>SR22: 1 click $2.09<br><strong>$3.28 total</strong><br><span class="no-conversions">0 conv</span></div>
+                </div>
+            </div>
+            <p style="color:#95a5a6; font-size:0.85rem; margin-top:15px;">Note: Very low impression volume on March 22 — only 4 active hours. Campaigns may have hit budget cap or were paused early in the day.</p>
+        </div>
+
+        <!-- 6. GEOGRAPHIC PERFORMANCE -->
+        <div class="section">
+            <h2 class="section-title">Geographic Performance (Top Locations) <span style="font-size:0.8rem;color:#f39c12;font-weight:normal;">(Mar 22 data — sync lag)</span></h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Criteria ID</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td><strong>Gainesville</strong></td>
+                            <td>1015033</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="low-cost">$2.09</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>High Springs</strong></td>
+                            <td>1015050</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="low-cost">$1.19</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unknown</strong></td>
+                            <td>1015076</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lake City</strong></td>
+                            <td>1015082</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Miami</strong></td>
+                            <td>1015116</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>North Fort Myers</strong></td>
+                            <td>1015137</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 7. SEARCH TERMS ANALYSIS -->
+        <div class="section">
+            <h2 class="section-title">Search Terms Analysis (Top Converting Queries) <span style="font-size:0.8rem;color:#f39c12;font-weight:normal;">(Mar 22 data — sync lag)</span></h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Search Query</th>
+                            <th>Campaign</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>sr 22 insurance florida</td>
+                            <td>SR22 - Florida</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="low-cost">$2.09</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color:#95a5a6; font-size:0.85rem; margin-top:10px;">Only 1 search term recorded on March 22 due to very low campaign activity.</p>
+        </div>
+
+        <!-- 8. LEAD RESPONSE DELTA -->
+        <div class="section">
+            <h2 class="section-title">📞 Lead Response Delta — March 23, 2026</h2>
+            <div class="lead-summary-cards">
+                <div class="lead-card">
+                    <div class="lead-n">20</div>
+                    <div class="lead-l">New Leads Assigned</div>
+                </div>
+                <div class="lead-card">
+                    <div class="lead-n" style="color:#27ae60;">10</div>
+                    <div class="lead-l">Called (Fonality)</div>
+                </div>
+                <div class="lead-card">
+                    <div class="lead-n" style="color:#e74c3c;">10</div>
+                    <div class="lead-l">Not Called</div>
+                </div>
+                <div class="lead-card">
+                    <div class="lead-n" style="color:#f39c12;">0.0</div>
+                    <div class="lead-l">Median Min Assigned→Call</div>
+                </div>
+            </div>
+            <p style="color:#95a5a6; font-size:0.85rem; margin-bottom:20px;">
+                293 total leads in Radius for March 23. Assignment time = Radius Notes "Workflow Reassign Unworked Lead" event (fallback: first status change from New Lead). "Called" = Fonality outbound CDR match found.
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lead</th>
+                            <th>Assigned</th>
+                            <th>First Attempt (Notes)</th>
+                            <th>Δ Assign→Attempt</th>
+                            <th>First Call (Fonality)</th>
+                            <th>Δ Assign→Call</th>
+                            <th>Called?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Avril Pinkerton</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31714557</span></td>
+                            <td>03/23 11:09AM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Steven Ellis</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31714899</span></td>
+                            <td>03/23 11:22AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 11:23AM</td>
+                            <td>1.0 min</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Michelle Ohlendorf</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31716843</span></td>
+                            <td>03/23 12:52PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 12:49PM</td>
+                            <td>-3.0 min</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ruben Garcia</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31717449</span></td>
+                            <td>03/23 1:24PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 1:24PM</td>
+                            <td>0.0 min</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shawn Degraff</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31717432</span></td>
+                            <td>—</td>
+                            <td><span class="pill pill-sms">SMS</span> 1:23PM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>(No Name)</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31717521</span></td>
+                            <td>03/23 2:05PM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr class="poor-performer">
+                            <td><strong>Steven Ellis</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31714828</span></td>
+                            <td>03/23 11:19AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 2:08PM</td>
+                            <td style="color:#e74c3c;font-weight:bold;">169.0 min</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Augustus Ashley</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31720594</span></td>
+                            <td>—</td>
+                            <td><span class="pill pill-sms">SMS</span> 3:08PM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dariel Torres</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31720770</span></td>
+                            <td>03/23 3:15PM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="pill pill-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CAROLYN NEWSON</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31717317</span></td>
+                            <td>03/23 1:27PM</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>03/23 3:28PM</td>
+                            <td>121.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Lindsey Lynch</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31716883</span></td>
+                            <td>03/23 12:54PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 1:08PM</td>
+                            <td>14.0 min</td>
+                            <td>03/23 1:06PM</td>
+                            <td style="color:#27ae60;font-weight:bold;">12.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>DAVID BIRMINGHAM</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31712465</span></td>
+                            <td>03/23 10:48AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 10:19AM</td>
+                            <td>-29.0 min</td>
+                            <td>03/23 10:51AM</td>
+                            <td style="color:#27ae60;font-weight:bold;">3.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Tristin Osborne</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31711985</span></td>
+                            <td>03/23 9:55AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 9:56AM</td>
+                            <td>1.0 min</td>
+                            <td>03/23 9:56AM</td>
+                            <td style="color:#27ae60;font-weight:bold;">1.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Dorman Pantfoeder</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31712553</span></td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>03/23 9:57AM</td>
+                            <td>—</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Ashley Seeberger</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31715707</span></td>
+                            <td>03/23 12:01PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 12:02PM</td>
+                            <td>1.0 min</td>
+                            <td>03/23 12:01PM</td>
+                            <td style="color:#27ae60;font-weight:bold;">0.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Lance Walker</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31720067</span></td>
+                            <td>03/23 2:45PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 2:45PM</td>
+                            <td>0.0 min</td>
+                            <td>03/23 2:45PM</td>
+                            <td style="color:#27ae60;font-weight:bold;">0.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Ashley Seeberger</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31715756</span></td>
+                            <td>03/23 12:03PM</td>
+                            <td><span class="pill pill-sms">SMS</span> 12:03PM</td>
+                            <td>0.0 min</td>
+                            <td>03/23 12:01PM</td>
+                            <td style="color:#27ae60;font-weight:bold;">-2.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Tristin Osborne</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31712112</span></td>
+                            <td>03/23 10:01AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 10:02AM</td>
+                            <td>1.0 min</td>
+                            <td>03/23 9:56AM</td>
+                            <td>-5.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Logan Riley</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31714720</span></td>
+                            <td>03/23 11:22AM</td>
+                            <td><span class="pill pill-sms">SMS</span> 11:14AM</td>
+                            <td>-8.0 min</td>
+                            <td>03/23 11:14AM</td>
+                            <td>-8.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td><strong>Angelica Vega</strong><br><span style="color:#95a5a6;font-size:0.8rem;">Record 31723522</span></td>
+                            <td>03/23 5:25PM</td>
+                            <td><span class="pill pill-email">EMAIL</span> 5:25PM</td>
+                            <td>0.0 min</td>
+                            <td>03/23 5:16PM</td>
+                            <td>-9.0 min</td>
+                            <td><span class="pill pill-yes">YES ✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 9. KEY INSIGHTS -->
+        <div class="section">
+            <h2 class="section-title">💡 Key Insights</h2>
+            <div style="background: rgba(0, 212, 255, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #00d4ff;">
+                <h3 style="color: #00d4ff; margin-bottom: 15px;">Performance Highlights</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #f39c12;">⚠</span>
+                        <strong>Very Low Ad Spend (Mar 22):</strong> Only $3.28 spend — campaigns likely hit budget cap or were paused early. Normal days run $400–600+. Investigate budget settings.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #27ae60;">✓</span>
+                        <strong>Strong Lead Volume:</strong> 293 leads in Radius for March 23. 10 of 20 newly tracked leads called — 50% Fonality match rate.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #27ae60;">✓</span>
+                        <strong>Best Response Times:</strong> Ashley Seeberger (0 min), Lance Walker (0 min), Tristin Osborne (1 min) — instant outreach.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">⚠</span>
+                        <strong>Slow Response:</strong> Steven Ellis (Record 31714828) waited 169 min for first SMS — needs immediate attention. CAROLYN NEWSON waited 121 min for first call.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #9b59b6;">★</span>
+                        <strong>SR22 Florida High Intent:</strong> "sr 22 insurance florida" triggered at $2.09 CPC with 50% CTR — laser-targeted traffic when campaigns are active.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #3498db;">📞</span>
+                        <strong>10 Leads Not Called:</strong> Avril Pinkerton, Ruben Garcia, Dariel Torres, and others have no Fonality outbound match — follow up needed.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #95a5a6; font-size: 0.9rem;">
+        Generated March 24, 2026 | FR44 &amp; SR22 Experts — Daily AdWords Report<br>
+        AdWords data: March 22 (1-day sync lag) | Lead &amp; Call data: March 23 (live)
+    </footer>
+</body>
+</html>

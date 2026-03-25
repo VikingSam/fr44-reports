@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR44 Daily Report — March 9, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #e8e8ed; min-height: 100vh; padding: 40px 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .header h1 { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #666; }
+  .header .date { font-size: 13px; color: #555; margin-top: 4px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+  .stat-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; text-align: center; }
+  .stat-card .number { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 500; }
+  .stat-card.spend .number { color: #ff8f5e; }
+  .stat-card.clicks .number { color: #60a5fa; }
+  .stat-card.conv .number { color: #34d399; }
+  .stat-card.cpa .number { color: #a78bfa; }
+  .stat-card.ctr .number { color: #fbbf24; }
+
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-left: 4px; color: #fff; }
+  .section-title span { color: #60a5fa; }
+
+  .box { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+  .box.orange { background: linear-gradient(135deg, #1a1510, #111118); border-color: rgba(255,107,53,0.15); }
+  .box h3 { font-size: 15px; font-weight: 700; color: #ff8f5e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .box.blue h3 { color: #60a5fa; }
+  .box.green h3 { color: #34d399; }
+
+  table { width: 100%; border-collapse: collapse; }
+  table th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  table tr:hover { background: rgba(96,165,250,0.04); }
+  .text-blue { color: #60a5fa; font-weight: 600; }
+  .text-green { color: #34d399; font-weight: 600; }
+  .text-orange { color: #ff8f5e; font-weight: 600; }
+  .text-purple { color: #a78bfa; font-weight: 600; }
+  .text-yellow { color: #fbbf24; font-weight: 600; }
+  .text-dim { color: #555; }
+  .text-white { color: #e8e8ed; font-weight: 500; }
+
+  .ag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .ag-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; }
+  .ag-card .name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+  .ag-stat { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+  .ag-stat .l { color: #666; }
+  .ag-stat .v { color: #e8e8ed; font-weight: 500; }
+  .bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  .hourly-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .hour-cell { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px 8px; text-align: center; }
+  .hour-cell .time { font-size: 11px; color: #666; font-weight: 500; }
+  .hour-cell .clicks { font-size: 20px; font-weight: 700; color: #60a5fa; margin: 4px 0; }
+  .hour-cell .spend { font-size: 11px; color: #ff8f5e; }
+  .hour-cell .conv { font-size: 11px; color: #34d399; margin-top: 2px; }
+  .hour-cell.peak { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .status-badge.up { background: #1a3a2a; color: #34d399; }
+  .status-badge.down { background: #3a1a1a; color: #f87171; }
+
+  .footer { text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 12px; color: #333; margin-top: 40px; }
+  .footer span { color: #60a5fa; }
+
+  @media (max-width: 700px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .ag-grid { grid-template-columns: 1fr; }
+    .hourly-grid { grid-template-columns: repeat(4, 1fr); }
+    .stat-card .number { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📊 FR44 Daily Report</h1>
+    <div class="subtitle">FR44 & SR22 Experts — Google Ads Performance</div>
+    <div class="date">Sunday, March 9, 2026</div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="stats-row">
+    <div class="stat-card spend"><div class="number">$950</div><div class="label">Total Spend</div></div>
+    <div class="stat-card clicks"><div class="number">76</div><div class="label">Clicks</div></div>
+    <div class="stat-card conv"><div class="number">18</div><div class="label">Conversions</div></div>
+    <div class="stat-card cpa"><div class="number">$52.77</div><div class="label">Cost / Conv</div></div>
+    <div class="stat-card ctr"><div class="number">4.65%</div><div class="label">CTR</div></div>
+  </div>
+
+  <!-- 1. Ad Group Breakdown -->
+  <div class="section">
+    <div class="section-title">📈 <span>Ad Group Performance</span></div>
+    <div class="ag-grid">
+      <div class="ag-card">
+        <div class="name">FR44 Owner</div>
+        <div class="ag-stat"><span class="l">Impressions</span><span class="v">1368</span></div>
+        <div class="ag-stat"><span class="l">Clicks</span><span class="v text-blue">63</span></div>
+        <div class="ag-stat"><span class="l">Cost</span><span class="v text-orange">$802.03</span></div>
+        <div class="ag-stat"><span class="l">Conversions</span><span class="v text-green">11</span></div>
+        <div class="ag-stat"><span class="l">CPA</span><span class="v text-purple">$72.91</span></div>
+        <div class="bar"><div class="bar-fill" style="width:84%; background: linear-gradient(90deg, #60a5fa, #818cf8);"></div></div>
+      </div>
+      <div class="ag-card">
+        <div class="name">Non-Owner FR44</div>
+        <div class="ag-stat"><span class="l">Impressions</span><span class="v">268</span></div>
+        <div class="ag-stat"><span class="l">Clicks</span><span class="v text-blue">13</span></div>
+        <div class="ag-stat"><span class="l">Cost</span><span class="v text-orange">$147.80</span></div>
+        <div class="ag-stat"><span class="l">Conversions</span><span class="v text-green">7</span></div>
+        <div class="ag-stat"><span class="l">CPA</span><span class="v text-purple">$21.11</span></div>
+        <div class="bar"><div class="bar-fill" style="width:16%; background: linear-gradient(90deg, #34d399, #6ee7b7);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Lead Intake & Response Delta -->
+  <div class="section">
+    <div class="section-title">📋 <span>Lead Intake & Response Delta</span></div>
+    <div class="box">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px;">
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#888;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Form Leads</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#888;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Inbound (Form)</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#888;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Outbound Reached</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#888;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">No Calls</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#888;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Phone-Only Leads</div>
+        </div>
+      </div>
+      <div style="padding: 32px; background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.2); border-radius: 12px; text-align: center;">
+        <div style="font-size: 18px; color: #fbbf24; font-weight: 700; margin-bottom: 8px;">⚠️ Awaiting Lead Data</div>
+        <div style="font-size: 13px; color: #888;">Drop Radius + Fonality CSVs in Google Drive and I'll regenerate the full report with lead details.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Top Keywords -->
+  <div class="section">
+    <div class="section-title">🔑 <span>Top Keywords</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>Keyword</th><th>Clicks</th><th>Cost</th><th>Conv</th><th>CTR</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">fr44 insurance florida</td><td class="text-blue">29</td><td class="text-orange">$339.27</td><td class="text-green">5.5</td><td>4.11%</td></tr>
+          <tr><td class="text-white">fr44 insurance</td><td class="text-blue">17</td><td class="text-orange">$213.64</td><td class="text-green">0.5</td><td>3.68%</td></tr>
+          <tr><td class="text-white">cheap fr44 insurance</td><td class="text-blue">8</td><td class="text-orange">$109.51</td><td class="text-dim">0</td><td>4.73%</td></tr>
+          <tr><td class="text-white">non owner fr44 insurance</td><td class="text-blue">6</td><td class="text-orange">$72.25</td><td class="text-green">2</td><td>4.14%</td></tr>
+          <tr><td class="text-white">florida fr44</td><td class="text-blue">5</td><td class="text-orange">$83.95</td><td class="text-dim">0</td><td>13.89%</td></tr>
+          <tr><td class="text-white">fr44 filing florida</td><td class="text-blue">4</td><td class="text-orange">$55.66</td><td class="text-green">5</td><td>4.71%</td></tr>
+          <tr><td class="text-white">non owner fr44 insurance florida</td><td class="text-blue">3</td><td class="text-orange">$39.94</td><td class="text-green">1</td><td>100%</td></tr>
+          <tr><td class="text-white">fr44 without a car</td><td class="text-blue">2</td><td class="text-orange">$21.02</td><td class="text-dim">0</td><td>8.33%</td></tr>
+          <tr><td class="text-white">non owner sr22 insurance online</td><td class="text-blue">1</td><td class="text-orange">$4.71</td><td class="text-green">2</td><td>100%</td></tr>
+          <tr><td class="text-white">fr44 insurance without vehicle florida</td><td class="text-blue">1</td><td class="text-orange">$9.88</td><td class="text-green">2</td><td>20%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 4. Top Search Terms -->
+  <div class="section">
+    <div class="section-title">🔍 <span>Top Search Terms</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>Search Term</th><th>Clicks</th><th>Cost</th><th>Conv</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">fr44 non owner insurance florida</td><td class="text-blue">1</td><td class="text-orange">$14.30</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">how much is non owner car insurance per month</td><td class="text-blue">1</td><td class="text-orange">$10.17</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">instant non owner car insurance</td><td class="text-blue">1</td><td class="text-orange">$10.38</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">fr44 insurance without vehicle</td><td class="text-blue">1</td><td class="text-orange">$9.88</td><td class="text-green">2</td></tr>
+          <tr><td class="text-white">sr 22 no vehicle</td><td class="text-blue">1</td><td class="text-orange">$4.71</td><td class="text-green">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Hourly Performance -->
+  <div class="section">
+    <div class="section-title">⏰ <span>Hourly Performance</span></div>
+    <div class="box">
+      <div class="hourly-grid">
+        <div class="hour-cell"><div class="time">8 AM</div><div class="clicks">3</div><div class="spend">$45.07</div><div class="conv">0 conv</div></div>
+        <div class="hour-cell peak"><div class="time">9 AM</div><div class="clicks">12</div><div class="spend">$167.00</div><div class="conv">7 conv</div></div>
+        <div class="hour-cell peak"><div class="time">10 AM</div><div class="clicks">15</div><div class="spend">$209.35</div><div class="conv">3 conv</div></div>
+        <div class="hour-cell peak"><div class="time">11 AM</div><div class="clicks">18</div><div class="spend">$245.22</div><div class="conv">2 conv</div></div>
+        <div class="hour-cell"><div class="time">12 PM</div><div class="clicks">8</div><div class="spend">$73.87</div><div class="conv">3.5 conv</div></div>
+        <div class="hour-cell"><div class="time">1 PM</div><div class="clicks">4</div><div class="spend">$35.11</div><div class="conv">0.5 conv</div></div>
+        <div class="hour-cell peak"><div class="time">2 PM</div><div class="clicks">15</div><div class="spend">$169.49</div><div class="conv">0 conv</div></div>
+        <div class="hour-cell"><div class="time">3 PM</div><div class="clicks">1</div><div class="spend">$4.71</div><div class="conv">2 conv</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Geographic -->
+  <div class="section">
+    <div class="section-title">📍 <span>Top Cities</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>City</th><th>Clicks</th><th>Cost</th><th>Conv</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">Daytona Beach (1015001)</td><td class="text-blue">1</td><td class="text-orange">$17.55</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Clearwater (1014984)</td><td class="text-blue">1</td><td class="text-orange">$16.13</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Cocoa Beach (1014989)</td><td class="text-blue">1</td><td class="text-orange">$9.90</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Crawfordville (1014991)</td><td class="text-blue">1</td><td class="text-orange">$9.88</td><td class="text-green">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    Generated by <span>Blade</span> · FR44 & SR22 Experts · Monday, March 10, 2026
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FR44 Daily Reports — Archive</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0f18; color: #e1e4ea; height: 100vh; display: flex; flex-direction: column; }
+.top-bar { background: #13151f; border-bottom: 1px solid rgba(255,255,255,.08); padding: 14px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.top-bar h1 { font-size: 16px; font-weight: 700; color: #fff; }
+.top-bar .subtitle { font-size: 12px; color: #8b8fa3; }
+.logo { font-size: 20px; }
+.layout { display: flex; flex: 1; overflow: hidden; }
+.sidebar { width: 220px; background: #13151f; border-right: 1px solid rgba(255,255,255,.08); overflow-y: auto; flex-shrink: 0; }
+.sidebar-header { padding: 14px 16px 10px; font-size: 10px; color: #8b8fa3; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.05); }
+table.report-list { width: 100%; border-collapse: collapse; }
+table.report-list thead th { padding: 8px 12px; font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.04); }
+.report-row { cursor: pointer; transition: background 0.1s; }
+.report-row:hover { background: rgba(255,255,255,.04); }
+.report-row.active { background: rgba(96,165,250,.12); border-left: 3px solid #60a5fa; }
+.report-row td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,.03); vertical-align: middle; }
+.date-cell { display: flex; flex-direction: column; }
+.day-name { font-size: 10px; color: #8b8fa3; text-transform: uppercase; letter-spacing: 0.5px; }
+.date-num { font-size: 13px; font-weight: 600; color: #e1e4ea; }
+.main-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.report-header { padding: 12px 20px; background: #13151f; border-bottom: 1px solid rgba(255,255,255,.05); font-size: 13px; color: #8b8fa3; flex-shrink: 0; }
+.report-header span { color: #fff; font-weight: 600; }
+iframe#report-frame { flex: 1; border: none; background: #0d0f18; }
+.no-report { flex: 1; display: flex; align-items: center; justify-content: center; color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">🗡️</div>
+  <div>
+    <h1>FR44 Daily Reports</h1>
+    <div class="subtitle">FR44 & SR22 Experts — Report Archive</div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-header">Reports (14)</div>
+    <table class="report-list">
+      <thead>
+        <tr><th>Date</th><th>Spend</th><th>Conv</th></tr>
+      </thead>
+      <tbody>
+        
+    <tr onclick="loadReport('daily-pretty-2026-03-24.html')" class="report-row" data-file="daily-pretty-2026-03-24.html">
+      <td class="date-cell">
+        <span class="day-name">Tue</span>
+        <span class="date-num">Mar 24</span>
+      </td>
+      <td>$530.27</td>
+      <td>10</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-23.html')" class="report-row" data-file="daily-pretty-2026-03-23.html">
+      <td class="date-cell">
+        <span class="day-name">Mon</span>
+        <span class="date-num">Mar 23</span>
+      </td>
+      <td>$3.28</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-20.html')" class="report-row" data-file="daily-pretty-2026-03-20.html">
+      <td class="date-cell">
+        <span class="day-name">Fri</span>
+        <span class="date-num">Mar 20</span>
+      </td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-19.html')" class="report-row" data-file="daily-pretty-2026-03-19.html">
+      <td class="date-cell">
+        <span class="day-name">Thu</span>
+        <span class="date-num">Mar 19</span>
+      </td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-18.html')" class="report-row" data-file="daily-pretty-2026-03-18.html">
+      <td class="date-cell">
+        <span class="day-name">Wed</span>
+        <span class="date-num">Mar 18</span>
+      </td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-17.html')" class="report-row" data-file="daily-pretty-2026-03-17.html">
+      <td class="date-cell">
+        <span class="day-name">Tue</span>
+        <span class="date-num">Mar 17</span>
+      </td>
+      <td>—</td>
+      <td>8</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-13.html')" class="report-row" data-file="daily-pretty-2026-03-13.html">
+      <td class="date-cell">
+        <span class="day-name">Fri</span>
+        <span class="date-num">Mar 13</span>
+      </td>
+      <td>—</td>
+      <td>5</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-12.html')" class="report-row" data-file="daily-pretty-2026-03-12.html">
+      <td class="date-cell">
+        <span class="day-name">Thu</span>
+        <span class="date-num">Mar 12</span>
+      </td>
+      <td>—</td>
+      <td>13</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-11.html')" class="report-row" data-file="daily-pretty-2026-03-11.html">
+      <td class="date-cell">
+        <span class="day-name">Wed</span>
+        <span class="date-num">Mar 11</span>
+      </td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-10.html')" class="report-row" data-file="daily-pretty-2026-03-10.html">
+      <td class="date-cell">
+        <span class="day-name">Tue</span>
+        <span class="date-num">Mar 10</span>
+      </td>
+      <td>—</td>
+      <td>18</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-09.html')" class="report-row" data-file="daily-pretty-2026-03-09.html">
+      <td class="date-cell">
+        <span class="day-name">Mon</span>
+        <span class="date-num">Mar 9</span>
+      </td>
+      <td>—</td>
+      <td>18</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-07.html')" class="report-row" data-file="daily-pretty-2026-03-07.html">
+      <td class="date-cell">
+        <span class="day-name">Sat</span>
+        <span class="date-num">Mar 7</span>
+      </td>
+      <td>—</td>
+      <td>10</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-05.html')" class="report-row" data-file="daily-pretty-2026-03-05.html">
+      <td class="date-cell">
+        <span class="day-name">Thu</span>
+        <span class="date-num">Mar 5</span>
+      </td>
+      <td>$309.15</td>
+      <td>—</td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-03-04.html')" class="report-row" data-file="daily-pretty-2026-03-04.html">
+      <td class="date-cell">
+        <span class="day-name">Wed</span>
+        <span class="date-num">Mar 4</span>
+      </td>
+      <td>$609.11</td>
+      <td>—</td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="main-content">
+    <div class="report-header" id="report-title">
+      Loading: <span id="report-date-label">Tuesday, March 24, 2026</span>
+    </div>
+    <iframe id="report-frame" src="daily-pretty-2026-03-24.html"></iframe>
+  </div>
+</div>
+
+<script>
+function loadReport(filename) {
+  const frame = document.getElementById('report-frame');
+  frame.src = filename;
+  
+  // Update active state
+  document.querySelectorAll('.report-row').forEach(r => r.classList.remove('active'));
+  const row = document.querySelector(`[data-file="${filename}"]`);
+  if (row) row.classList.add('active');
+  
+  // Update header
+  const dateCell = row ? row.querySelector('.date-num').textContent : '';
+  const dayCell = row ? row.querySelector('.day-name').textContent : '';
+  document.getElementById('report-date-label').textContent = dayCell + ' ' + dateCell;
+}
+
+// Auto-select the first row
+document.addEventListener('DOMContentLoaded', () => {
+  const first = document.querySelector('.report-row');
+  if (first) first.classList.add('active');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FR44 Daily — Monday, March 23, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #e8e8ed; min-height: 100vh; padding: 40px 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .header h1 { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #666; }
+  .header .date { font-size: 13px; color: #555; margin-top: 4px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+  .stat-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; text-align: center; }
+  .stat-card .number { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 500; }
+  .stat-card.spend .number { color: #ff8f5e; }
+  .stat-card.clicks .number { color: #60a5fa; }
+  .stat-card.conv .number { color: #34d399; }
+  .stat-card.cpa .number { color: #a78bfa; }
+  .stat-card.ctr .number { color: #fbbf24; }
+
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-left: 4px; color: #fff; }
+  .section-title span { color: #60a5fa; }
+
+  .box { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+  .box.orange { background: linear-gradient(135deg, #1a1510, #111118); border-color: rgba(255,107,53,0.15); }
+  .box h3 { font-size: 15px; font-weight: 700; color: #ff8f5e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .box.blue h3 { color: #60a5fa; }
+  .box.green h3 { color: #34d399; }
+
+  table { width: 100%; border-collapse: collapse; }
+  table th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  table tr:hover { background: rgba(96,165,250,0.04); }
+  .text-blue { color: #60a5fa; font-weight: 600; }
+  .text-green { color: #34d399; font-weight: 600; }
+  .text-orange { color: #ff8f5e; font-weight: 600; }
+  .text-purple { color: #a78bfa; font-weight: 600; }
+  .text-yellow { color: #fbbf24; font-weight: 600; }
+  .text-dim { color: #555; }
+  .text-white { color: #e8e8ed; font-weight: 500; }
+
+  .ag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .ag-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; }
+  .ag-card .name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+  .ag-stat { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+  .ag-stat .l { color: #666; }
+  .ag-stat .v { color: #e8e8ed; font-weight: 500; }
+  .bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  .hourly-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .hour-cell { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px 8px; text-align: center; }
+  .hour-cell .time { font-size: 11px; color: #666; font-weight: 500; }
+  .hour-cell .clicks { font-size: 20px; font-weight: 700; color: #60a5fa; margin: 4px 0; }
+  .hour-cell .spend { font-size: 11px; color: #ff8f5e; }
+  .hour-cell .conv { font-size: 11px; color: #34d399; margin-top: 2px; }
+  .hour-cell.peak { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .status-badge.up { background: #1a3a2a; color: #34d399; }
+  .status-badge.down { background: #3a1a1a; color: #f87171; }
+
+  .footer { text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 12px; color: #333; margin-top: 40px; }
+  .footer span { color: #60a5fa; }
+
+  @media (max-width: 700px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .ag-grid { grid-template-columns: 1fr; }
+    .hourly-grid { grid-template-columns: repeat(4, 1fr); }
+    .stat-card .number { font-size: 28px; }
+  }
+
+.stat-grid{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.stat-card{flex:1;min-width:130px;background:#1e2130;border-radius:10px;padding:16px 20px;text-align:center;border:1px solid rgba(255,255,255,.07)}
+.stat-card .number{font-size:28px;font-weight:700}
+.stat-card .label{font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+.stat-card.spend .number{color:#60a5fa}.stat-card.conv .number{color:#34d399}.stat-card.cpa .number{color:#fbbf24}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-green{background:#0d3321;color:#34d399}.badge-yellow{background:#3a2d00;color:#fbbf24}
+.badge-blue{background:#0d1f3a;color:#60a5fa}.badge-gray{background:#2a2a3a;color:#8b8fa3}
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.agent-card{background:#1e2130;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px}
+.agent-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08)}
+.agent-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0}
+.agent-label{color:#8b8fa3}.agent-val{color:#e1e4ea;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>FR44 &amp; SR22 Experts</h1>
+  <div class="subtitle">Daily Performance Report</div>
+  <div class="date">Monday, March 23, 2026</div>
+</div>
+<div class="stat-grid">
+<div class="stat-card spend"><div class="number">$530.27</div><div class="label">Total Spend</div></div>
+<div class="stat-card clicks"><div class="number">57</div><div class="label">Clicks</div></div>
+<div class="stat-card conv"><div class="number">10</div><div class="label">Conversions</div></div>
+<div class="stat-card cpa"><div class="number">$53.03</div><div class="label">Cost / Conv</div></div>
+<div class="stat-card ctr"><div class="number">4.7%</div><div class="label">CTR</div></div>
+</div><div class="section"><div class="section-title">👥 <span>Agent Summary</span></div><div class="agent-grid"><div class="agent-card">
+<div class="agent-name">💼 Michell</div>
+<div class="agent-row"><span class="agent-label">Leads Assigned</span><span class="agent-val">6</span></div>
+<div class="agent-row"><span class="agent-label">Qualified Inbound</span><span class="agent-val">1</span></div>
+<div class="agent-row"><span class="agent-label">Avg Response</span><span class="agent-val">12m</span></div>
+</div><div class="agent-card">
+<div class="agent-name">💼 Liz</div>
+<div class="agent-row"><span class="agent-label">Leads Assigned</span><span class="agent-val">5</span></div>
+<div class="agent-row"><span class="agent-label">Qualified Inbound</span><span class="agent-val">1</span></div>
+<div class="agent-row"><span class="agent-label">Avg Response</span><span class="agent-val">15m</span></div>
+</div><div class="agent-card">
+<div class="agent-name">💼 Cole</div>
+<div class="agent-row"><span class="agent-label">Leads Assigned</span><span class="agent-val">4</span></div>
+<div class="agent-row"><span class="agent-label">Qualified Inbound</span><span class="agent-val">5</span></div>
+<div class="agent-row"><span class="agent-label">Avg Response</span><span class="agent-val">3m</span></div>
+</div></div></div><div class="section"><div class="section-title">📋 <span>Lead Intake & Response Delta</span></div><div class="box"><table>
+<thead><tr><th>Lead</th><th>Agent</th><th>Assigned</th><th>First Call</th><th>Delta</th><th>Status</th></tr></thead>
+<tbody><tr>
+<td><strong>Tristin Osborne</strong><br><small style="color:#8b8fa3">Cape Coral, FL</small></td>
+<td>Michell</td>
+<td>10:01 AM</td>
+<td>10:48 AM</td>
+<td style="color:#f87171;font-weight:700">47m</td>
+<td><span class="badge badge-green">Contact Made</span></td>
+</tr><tr>
+<td><strong>dorman pantfoeder</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Liz</td>
+<td>10:21 AM</td>
+<td>10:48 AM</td>
+<td style="color:#f87171;font-weight:700">27m</td>
+<td><span class="badge badge-green">Contact Made</span></td>
+</tr><tr>
+<td><strong>DAVID BIRMINGHAM</strong><br><small style="color:#8b8fa3">VIRGINIA BEACH, VA</small></td>
+<td>Michell</td>
+<td>10:48 AM</td>
+<td>10:48 AM</td>
+<td style="color:#34d399;font-weight:700">0m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Avril Pinkerton</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Michell</td>
+<td>11:09 AM</td>
+<td>11:14 AM</td>
+<td style="color:#34d399;font-weight:700">5m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Steven ellis</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Michell</td>
+<td>11:19 AM</td>
+<td>11:28 AM</td>
+<td style="color:#fbbf24;font-weight:700">9m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Logan Riley</strong><br><small style="color:#8b8fa3">Jacksonville, FL</small></td>
+<td>Cole</td>
+<td>11:22 AM</td>
+<td>11:28 AM</td>
+<td style="color:#fbbf24;font-weight:700">6m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Ashley Seeberger</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Cole</td>
+<td>12:01 PM</td>
+<td>12:01 PM</td>
+<td style="color:#34d399;font-weight:700">0m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Michelle Ohlendorf</strong><br><small style="color:#8b8fa3">Fairview Heights, IL</small></td>
+<td>Liz</td>
+<td>12:52 PM</td>
+<td>1:06 PM</td>
+<td style="color:#fbbf24;font-weight:700">14m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>Lindsey Lynch</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Liz</td>
+<td>12:54 PM</td>
+<td>1:06 PM</td>
+<td style="color:#fbbf24;font-weight:700">12m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>shawn degraff</strong><br><small style="color:#8b8fa3">Lake Mary, FL</small></td>
+<td>Liz</td>
+<td>1:22 PM</td>
+<td>1:23 PM</td>
+<td style="color:#34d399;font-weight:700">1m</td>
+<td><span class="badge badge-green">Contact Made</span></td>
+</tr><tr>
+<td><strong>Ruben Garcia</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Cole</td>
+<td>1:24 PM</td>
+<td>1:30 PM</td>
+<td style="color:#fbbf24;font-weight:700">6m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>CAROLYN NEWSON</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Michell</td>
+<td>1:27 PM</td>
+<td>1:30 PM</td>
+<td style="color:#34d399;font-weight:700">3m</td>
+<td><span class="badge badge-gray">New Lead</span></td>
+</tr><tr>
+<td><strong>Lance Walker</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Cole</td>
+<td>2:45 PM</td>
+<td>2:45 PM</td>
+<td style="color:#34d399;font-weight:700">0m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr><tr>
+<td><strong>augustus ashley</strong><br><small style="color:#8b8fa3">Jacksonville, FL</small></td>
+<td>Liz</td>
+<td>3:07 PM</td>
+<td>3:28 PM</td>
+<td style="color:#f87171;font-weight:700">21m</td>
+<td><span class="badge badge-green">Contact Made</span></td>
+</tr><tr>
+<td><strong>Dariel Torres</strong><br><small style="color:#8b8fa3">FL</small></td>
+<td>Michell</td>
+<td>3:15 PM</td>
+<td>3:28 PM</td>
+<td style="color:#fbbf24;font-weight:700">13m</td>
+<td><span class="badge badge-yellow">Attempted</span></td>
+</tr></tbody></table></div></div><div class="section"><div class="section-title">📞 <span>Qualified Inbound Calls — 25 total (>2 min)</span></div><div class="box"><table>
+<thead><tr><th>Caller</th><th>Answered By</th><th>Talk Time</th><th>Time</th></tr></thead>
+<tbody><tr><td>689-230-4845</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:09:16</td><td>03/23/26  1:14 pm</td></tr><tr><td>727-260-2734</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:02:11</td><td>03/23/26  1:24 pm</td></tr><tr><td>407-638-1032</td><td style="font-weight:600;color:#60a5fa">Cole</td><td>00:02:38</td><td>03/23/26  1:28 pm</td></tr><tr><td>904-982-5086</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:11:09</td><td>03/23/26  2:58 pm</td></tr><tr><td>321-307-1155</td><td style="font-weight:600;color:#60a5fa">Cole</td><td>00:14:33</td><td>03/23/26  2:59 pm</td></tr><tr><td>727-260-2734</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:08:05</td><td>03/23/26  3:29 pm</td></tr><tr><td>813-997-8083</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:10:18</td><td>03/23/26  3:53 pm</td></tr><tr><td>407-770-7005</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:02:57</td><td>03/23/26  5:18 pm</td></tr><tr><td>561-875-5109</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:08:27</td><td>03/23/26  7:32 am</td></tr><tr><td>607-745-7974</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:12:51</td><td>03/23/26  7:43 am</td></tr><tr><td>727-389-2936</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:02:48</td><td>03/23/26  8:27 am</td></tr><tr><td>352-400-1177</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:11:37</td><td>03/23/26  8:37 am</td></tr><tr><td>813-608-9844</td><td style="font-weight:600;color:#60a5fa">Cole</td><td>00:02:30</td><td>03/23/26  9:30 am</td></tr><tr><td>630-800-6203</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:02:03</td><td>03/23/26 10:05 am</td></tr><tr><td>904-563-1022</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:07:02</td><td>03/23/26 10:15 am</td></tr><tr><td>352-400-1177</td><td style="font-weight:600;color:#60a5fa">Liz</td><td>00:04:41</td><td>03/23/26 10:25 am</td></tr><tr><td>941-666-0073</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:08:05</td><td>03/23/26 11:08 am</td></tr><tr><td>727-613-6033</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:10:02</td><td>03/23/26 11:18 am</td></tr><tr><td>321-367-0605</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:07:24</td><td>03/23/26 11:36 am</td></tr><tr><td>904-580-2704</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:16:36</td><td>03/23/26 11:42 am</td></tr><tr><td>239-399-1151</td><td style="font-weight:600;color:#60a5fa">Michell</td><td>00:06:40</td><td>03/23/26 12:05 pm</td></tr><tr><td>727-337-4090</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:02:00</td><td>03/23/26 12:05 pm</td></tr><tr><td>352-874-0577</td><td style="font-weight:600;color:#60a5fa">Cole</td><td>00:08:18</td><td>03/23/26 12:05 pm</td></tr><tr><td>239-777-1866</td><td style="font-weight:600;color:#60a5fa">Queue</td><td>00:04:32</td><td>03/23/26 12:08 pm</td></tr><tr><td>407-638-1032</td><td style="font-weight:600;color:#60a5fa">Cole</td><td>00:02:52</td><td>03/23/26 12:10 pm</td></tr></tbody></table></div></div><div class="section"><div class="section-title">🔑 <span>Top Keywords</span></div><div class="box"><table>
+<thead><tr><th>Keyword</th><th style="text-align:center">Clicks</th><th style="text-align:right">Spend</th><th style="text-align:center">Conv</th><th style="text-align:center">CTR</th><th style="text-align:right">CPA</th></tr></thead>
+<tbody><tr><td>fr44 insurance florida</td>
+<td style="text-align:center">35</td>
+<td style="text-align:right">$349.58</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4.1%</td>
+<td style="text-align:right">$69.92</td></tr><tr><td>fr44 without a car</td>
+<td style="text-align:center">8</td>
+<td style="text-align:right">$63.80</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9.5%</td>
+<td style="text-align:right">$31.90</td></tr><tr><td>non owner fr44 insurance</td>
+<td style="text-align:center">5</td>
+<td style="text-align:right">$45.99</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">4.3%</td>
+<td style="text-align:right">—</td></tr><tr><td>fr44 insurance</td>
+<td style="text-align:center">3</td>
+<td style="text-align:right">$20.46</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">5.1%</td>
+<td style="text-align:right">—</td></tr><tr><td>fr44 filing florida</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">$15.80</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3.4%</td>
+<td style="text-align:right">—</td></tr><tr><td>fr44 insurance without vehicle florida</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$11.85</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">33.3%</td>
+<td style="text-align:right">$5.92</td></tr><tr><td>non owner fr44 insurance florida</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$11.75</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">16.7%</td>
+<td style="text-align:right">—</td></tr><tr><td>suspended license florida</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$6.21</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">4.2%</td>
+<td style="text-align:right">$6.21</td></tr><tr><td>florida fr44</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$4.83</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">8.3%</td>
+<td style="text-align:right">—</td></tr><tr><td>non owner sr22 insurance online</td>
+<td style="text-align:center">0</td>
+<td style="text-align:right">$0.00</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td>
+<td style="text-align:right">—</td></tr></tbody></table></div></div><div class="section"><div class="section-title">🔍 <span>Top Search Terms</span></div><div class="box"><table>
+<thead><tr><th>Search Term</th><th style="text-align:center">Clicks</th><th style="text-align:right">Cost</th><th style="text-align:center">Conv</th><th style="text-align:center">CVR</th></tr></thead>
+<tbody><tr><td>fr pip cancellation suspension</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$19.80</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr44</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">$17.86</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr44 insurance florida</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">$16.96</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr44 insurance florida monthly payments</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">$16.20</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">100.0%</td></tr><tr><td>direct auto insurance number</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$12.00</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr44 non owner insurance</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$11.75</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>non owner car insurance</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$11.56</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>auto direct insurance contact number</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$9.65</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>how much is sr22 insurance</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$9.61</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr 44 insurance</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$8.35</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fr44 insurance</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$8.31</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr><tr><td>fiesta auto insurance & tax service orlando fl</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">$7.83</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.0%</td></tr></tbody></table></div></div><div class="section"><div class="section-title">⏰ <span>Hourly Performance</span></div><div class="box"><table>
+<thead><tr><th>Hour</th><th style="text-align:center">Clicks</th><th style="text-align:right">Cost</th><th style="text-align:center">Conv</th></tr></thead>
+<tbody><tr><td>9 AM</td><td style="text-align:center">6</td><td style="text-align:right">$58.09</td><td style="text-align:center">2</td></tr><tr><td>10 AM</td><td style="text-align:center">7</td><td style="text-align:right">$51.95</td><td style="text-align:center">0</td></tr><tr><td>11 AM</td><td style="text-align:center">10</td><td style="text-align:right">$84.22</td><td style="text-align:center">3</td></tr><tr><td>12 PM</td><td style="text-align:center">8</td><td style="text-align:right">$71.48</td><td style="text-align:center">1</td></tr><tr><td>1 PM</td><td style="text-align:center">10</td><td style="text-align:right">$111.12</td><td style="text-align:center">3</td></tr><tr><td>2 PM</td><td style="text-align:center">10</td><td style="text-align:right">$96.78</td><td style="text-align:center">0</td></tr><tr><td>3 PM</td><td style="text-align:center">6</td><td style="text-align:right">$56.63</td><td style="text-align:center">1</td></tr></tbody></table></div></div><div class="section"><div class="section-title">📍 <span>Top Cities (Leads)</span></div><div class="box"><table>
+<thead><tr><th>City</th><th style="text-align:center">Leads</th></tr></thead>
+<tbody><tr><td>Jacksonville, FL</td><td style="text-align:center">2</td></tr><tr><td>Cape Coral, FL</td><td style="text-align:center">1</td></tr><tr><td>VIRGINIA BEACH, VA</td><td style="text-align:center">1</td></tr><tr><td>Fairview Heights, IL</td><td style="text-align:center">1</td></tr><tr><td>Lake Mary, FL</td><td style="text-align:center">1</td></tr></tbody></table></div></div><div class="section"><div class="section-title">📈 <span>Ad Group Performance</span></div><div class="box"><table>
+<thead><tr><th>Ad Group</th><th style="text-align:center">Clicks</th><th style="text-align:right">Spend</th><th style="text-align:center">Conv</th><th style="text-align:center">CTR</th><th style="text-align:right">CPA</th></tr></thead>
+<tbody><tr><td>FR44 Owner</td>
+<td style="text-align:center">42</td>
+<td style="text-align:right">$396.88</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">4.2%</td>
+<td style="text-align:right">$66.15</td></tr><tr><td>Non-Owner FR44</td>
+<td style="text-align:center">15</td>
+<td style="text-align:right">$133.39</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">7.0%</td>
+<td style="text-align:right">$33.35</td></tr></tbody></table></div></div>
+<div class="footer">Blade · AdWords: yesterday only · Radius + Fonality: March 23, 2026</div>
+</body></html>

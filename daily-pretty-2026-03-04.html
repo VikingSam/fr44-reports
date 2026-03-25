@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR44 & SR22 Experts - Daily Report - March 4, 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #16213e, #0f3460);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .spend { color: #e74c3c; }
+        .clicks { color: #3498db; }
+        .conversions { color: #27ae60; }
+        .cpa { color: #f39c12; }
+        .ctr { color: #9b59b6; }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00d4ff;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        th {
+            background: #2c3e50;
+            color: #00d4ff;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        tr:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .good-ctr {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .poor-ctr {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .good-conversions {
+            background: rgba(39, 174, 96, 0.2);
+            color: #2ecc71;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+        
+        .no-conversions {
+            color: #95a5a6;
+        }
+        
+        .high-cost {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .low-cost {
+            color: #27ae60;
+        }
+        
+        .top-performer {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid #27ae60;
+        }
+        
+        .poor-performer {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .hourly-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .hour-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hour-time {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 8px;
+        }
+        
+        .hour-metrics {
+            font-size: 0.8rem;
+            color: #bdc3c7;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .date {
+                font-size: 1.2rem;
+            }
+            
+            .dashboard {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">FR44 & SR22 EXPERTS</div>
+            <div class="date">March 4, 2026 — Daily Report</div>
+            <div class="subtitle">AdWords Performance Analytics</div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="metric-card">
+                <div class="metric-value spend">$609.11</div>
+                <div class="metric-label">Total Spend</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value clicks">76</div>
+                <div class="metric-label">Total Clicks</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value conversions">14</div>
+                <div class="metric-label">Conversions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value cpa">$43.51</div>
+                <div class="metric-label">Cost Per Acquisition</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value ctr">6.14%</div>
+                <div class="metric-label">Click Through Rate</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Campaign Overview</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campaign Name</th>
+                            <th>Status</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                            <th>CTR</th>
+                            <th>Avg CPC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>FR44 - Landing Page - Claude</td>
+                            <td><span style="color: #27ae60;">Enabled</span></td>
+                            <td>1,238</td>
+                            <td>76</td>
+                            <td class="high-cost">$609.11</td>
+                            <td class="good-conversions">14</td>
+                            <td class="good-ctr">6.14%</td>
+                            <td>$8.01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Top Keywords Performance</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th>Ad Group</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                            <th>CTR</th>
+                            <th>Avg CPC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>fr44 insurance florida</td>
+                            <td>FR44 Owner</td>
+                            <td>224</td>
+                            <td>17</td>
+                            <td class="high-cost">$127.61</td>
+                            <td class="good-conversions">1.25</td>
+                            <td class="good-ctr">7.59%</td>
+                            <td>$7.51</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td>non owner fr44 insurance</td>
+                            <td>Non-Owner FR44</td>
+                            <td>143</td>
+                            <td>14</td>
+                            <td class="high-cost">$122.35</td>
+                            <td class="good-conversions">3.75</td>
+                            <td class="good-ctr">9.79%</td>
+                            <td>$8.74</td>
+                        </tr>
+                        <tr>
+                            <td>reinstate suspended license</td>
+                            <td>FR44 Owner</td>
+                            <td>201</td>
+                            <td>10</td>
+                            <td>$88.74</td>
+                            <td class="no-conversions">0</td>
+                            <td>4.98%</td>
+                            <td>$8.87</td>
+                        </tr>
+                        <tr>
+                            <td>license reinstatement florida</td>
+                            <td>FR44 Owner</td>
+                            <td>94</td>
+                            <td>2</td>
+                            <td>$20.35</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">2.13%</td>
+                            <td>$10.18</td>
+                        </tr>
+                        <tr>
+                            <td>how to fix my drivers license</td>
+                            <td>FR44 Owner</td>
+                            <td>92</td>
+                            <td>5</td>
+                            <td>$33.92</td>
+                            <td class="good-conversions">1</td>
+                            <td>5.43%</td>
+                            <td>$6.78</td>
+                        </tr>
+                        <tr>
+                            <td>florida fr44</td>
+                            <td>FR44 Owner</td>
+                            <td>72</td>
+                            <td>5</td>
+                            <td>$44.79</td>
+                            <td class="good-conversions">3</td>
+                            <td class="good-ctr">6.94%</td>
+                            <td>$8.96</td>
+                        </tr>
+                        <tr>
+                            <td>cheap fr44 insurance</td>
+                            <td>FR44 Owner</td>
+                            <td>56</td>
+                            <td>4</td>
+                            <td>$34.38</td>
+                            <td class="no-conversions">0</td>
+                            <td class="good-ctr">7.14%</td>
+                            <td>$8.60</td>
+                        </tr>
+                        <tr class="poor-performer">
+                            <td>non owner sr22 insurance online</td>
+                            <td>Non-Owner FR44</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td class="low-cost">$0</td>
+                            <td class="no-conversions">0</td>
+                            <td class="poor-ctr">0.00%</td>
+                            <td>$0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Hourly Performance</h2>
+            <div class="hourly-chart">
+                <div class="hour-card">
+                    <div class="hour-time">8 AM</div>
+                    <div class="hour-metrics">183 impressions<br>12 clicks<br>$101.19<br><span class="good-conversions">3 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">9 AM</div>
+                    <div class="hour-metrics">216 impressions<br>12 clicks<br>$96.88<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">10 AM</div>
+                    <div class="hour-metrics">289 impressions<br>14 clicks<br>$135.39<br><span class="good-conversions">5 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">11 AM</div>
+                    <div class="hour-metrics">154 impressions<br>10 clicks<br>$77.05<br><span class="good-conversions">4 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">12 PM</div>
+                    <div class="hour-metrics">106 impressions<br>8 clicks<br>$53.76<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">1 PM</div>
+                    <div class="hour-metrics">63 impressions<br>6 clicks<br>$33.02<br><span class="no-conversions">0 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">2 PM</div>
+                    <div class="hour-metrics">160 impressions<br>12 clicks<br>$97.23<br><span class="good-conversions">1 conv</span></div>
+                </div>
+                <div class="hour-card">
+                    <div class="hour-time">3 PM</div>
+                    <div class="hour-metrics">67 impressions<br>2 clicks<br>$14.58<br><span class="good-conversions">1 conv</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Geographic Performance (Top Locations)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Location ID</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>1015116</td>
+                            <td>34</td>
+                            <td>6</td>
+                            <td class="high-cost">$37.44</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>1015088</td>
+                            <td>27</td>
+                            <td>2</td>
+                            <td>$13.31</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>1015150</td>
+                            <td>58</td>
+                            <td>1</td>
+                            <td class="low-cost">$5.41</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td>1015031</td>
+                            <td>14</td>
+                            <td>4</td>
+                            <td class="high-cost">$38.22</td>
+                            <td class="good-conversions">1</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td>1014999</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td class="low-cost">$6.80</td>
+                            <td class="good-conversions">3</td>
+                        </tr>
+                        <tr>
+                            <td>1015055</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td class="low-cost">$7.19</td>
+                            <td class="good-conversions">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Search Terms Analysis (Top Converting Queries)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Search Query</th>
+                            <th>Impressions</th>
+                            <th>Clicks</th>
+                            <th>Cost</th>
+                            <th>Conversions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top-performer">
+                            <td>dairyland</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>$9.04</td>
+                            <td class="good-conversions">1</td>
+                        </tr>
+                        <tr class="top-performer">
+                            <td>non motorist insurance</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="low-cost">$6.89</td>
+                            <td class="good-conversions">1</td>
+                        </tr>
+                        <tr>
+                            <td>extended non owned coverage</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="low-cost">$7.89</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>non owner insurance policy</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>$10.53</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>what is a non owner car insurance policy</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="low-cost">$7.92</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>dui level 1 class online florida</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="low-cost">$7.34</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>dui course online florida</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>$8.74</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                        <tr>
+                            <td>broward county license reinstatement</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>$11.91</td>
+                            <td class="no-conversions">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Key Insights</h2>
+            <div style="background: rgba(0, 212, 255, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #00d4ff;">
+                <h3 style="color: #00d4ff; margin-bottom: 15px;">💡 Performance Highlights</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #27ae60;">✓</span>
+                        <strong>Strong CTR:</strong> 6.14% overall CTR is excellent for insurance keywords
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #27ae60;">✓</span>
+                        <strong>High Converting Keywords:</strong> "non owner fr44 insurance" leading with 3.75 conversions
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">⚠</span>
+                        <strong>Peak Hours:</strong> 10-11 AM showing highest conversion rates
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #f39c12;">★</span>
+                        <strong>CPA Target:</strong> $43.51 CPA - monitor against target thresholds
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #95a5a6; font-size: 0.9rem;">
+        Generated on March 5, 2026 | FR44 & SR22 Experts - AdWords Daily Report
+    </footer>
+</body>
+</html>

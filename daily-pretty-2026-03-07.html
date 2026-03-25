@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR44 Daily Report — March 6, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #e8e8ed; min-height: 100vh; padding: 40px 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .header h1 { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #666; }
+  .header .date { font-size: 13px; color: #555; margin-top: 4px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+  .stat-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; text-align: center; }
+  .stat-card .number { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 500; }
+  .stat-card.spend .number { color: #ff8f5e; }
+  .stat-card.clicks .number { color: #60a5fa; }
+  .stat-card.conv .number { color: #34d399; }
+  .stat-card.cpa .number { color: #a78bfa; }
+  .stat-card.ctr .number { color: #fbbf24; }
+
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-left: 4px; color: #fff; }
+  .section-title span { color: #60a5fa; }
+
+  .box { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+  .box.orange { background: linear-gradient(135deg, #1a1510, #111118); border-color: rgba(255,107,53,0.15); }
+  .box h3 { font-size: 15px; font-weight: 700; color: #ff8f5e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .box.blue h3 { color: #60a5fa; }
+  .box.green h3 { color: #34d399; }
+
+  table { width: 100%; border-collapse: collapse; }
+  table th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  table tr:hover { background: rgba(96,165,250,0.04); }
+  .text-blue { color: #60a5fa; font-weight: 600; }
+  .text-green { color: #34d399; font-weight: 600; }
+  .text-orange { color: #ff8f5e; font-weight: 600; }
+  .text-purple { color: #a78bfa; font-weight: 600; }
+  .text-yellow { color: #fbbf24; font-weight: 600; }
+  .text-dim { color: #555; }
+  .text-white { color: #e8e8ed; font-weight: 500; }
+
+  .ag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .ag-card { background: #111118; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; }
+  .ag-card .name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+  .ag-stat { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+  .ag-stat .l { color: #666; }
+  .ag-stat .v { color: #e8e8ed; font-weight: 500; }
+  .bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  .hourly-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .hour-cell { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px 8px; text-align: center; }
+  .hour-cell .time { font-size: 11px; color: #666; font-weight: 500; }
+  .hour-cell .clicks { font-size: 20px; font-weight: 700; color: #60a5fa; margin: 4px 0; }
+  .hour-cell .spend { font-size: 11px; color: #ff8f5e; }
+  .hour-cell .conv { font-size: 11px; color: #34d399; margin-top: 2px; }
+  .hour-cell.peak { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .status-badge.up { background: #1a3a2a; color: #34d399; }
+  .status-badge.down { background: #3a1a1a; color: #f87171; }
+
+  .footer { text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 12px; color: #333; margin-top: 40px; }
+  .footer span { color: #60a5fa; }
+
+  @media (max-width: 700px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .ag-grid { grid-template-columns: 1fr; }
+    .hourly-grid { grid-template-columns: repeat(4, 1fr); }
+    .stat-card .number { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📊 FR44 Daily Report</h1>
+    <div class="subtitle">FR44 & SR22 Experts — Google Ads Performance</div>
+    <div class="date">Friday, March 6, 2026</div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="stats-row">
+    <div class="stat-card spend"><div class="number">$238</div><div class="label">Total Spend</div></div>
+    <div class="stat-card clicks"><div class="number">31</div><div class="label">Clicks</div></div>
+    <div class="stat-card conv"><div class="number">10</div><div class="label">Conversions</div></div>
+    <div class="stat-card cpa"><div class="number">$23.77</div><div class="label">Cost / Conv</div></div>
+    <div class="stat-card ctr"><div class="number">4.66%</div><div class="label">CTR</div></div>
+  </div>
+
+  <!-- 1. Ad Group Breakdown -->
+  <div class="section">
+    <div class="section-title">📈 <span>Ad Group Performance</span></div>
+    <div class="ag-grid">
+      <div class="ag-card">
+        <div class="name">FR44 Owner</div>
+        <div class="ag-stat"><span class="l">Impressions</span><span class="v">507</span></div>
+        <div class="ag-stat"><span class="l">Clicks</span><span class="v text-blue">26</span></div>
+        <div class="ag-stat"><span class="l">Cost</span><span class="v text-orange">$197.23</span></div>
+        <div class="ag-stat"><span class="l">Conversions</span><span class="v text-green">5</span></div>
+        <div class="ag-stat"><span class="l">CPA</span><span class="v text-purple">$39.45</span></div>
+        <div class="bar"><div class="bar-fill" style="width:84%; background: linear-gradient(90deg, #60a5fa, #818cf8);"></div></div>
+      </div>
+      <div class="ag-card">
+        <div class="name">Non-Owner FR44</div>
+        <div class="ag-stat"><span class="l">Impressions</span><span class="v">158</span></div>
+        <div class="ag-stat"><span class="l">Clicks</span><span class="v text-blue">5</span></div>
+        <div class="ag-stat"><span class="l">Cost</span><span class="v text-orange">$40.50</span></div>
+        <div class="ag-stat"><span class="l">Conversions</span><span class="v text-green">5</span></div>
+        <div class="ag-stat"><span class="l">CPA</span><span class="v text-purple">$8.10</span></div>
+        <div class="bar"><div class="bar-fill" style="width:16%; background: linear-gradient(90deg, #34d399, #6ee7b7);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Lead Intake & Response Delta -->
+  <div class="section">
+    <div class="section-title">📋 <span>Lead Intake & Response Delta</span></div>
+    <div class="box">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px;">
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#60a5fa;">10</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Form Leads</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#34d399;">3</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Inbound (Form)</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#fbbf24;">6</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Outbound Reached</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(0,0,0,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#f87171;">1</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">No Calls</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.2); border-radius:10px;">
+          <div style="font-size:32px; font-weight:800; color:#818cf8;">18</div>
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-top:4px;">Phone-Only Leads</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Lead Name</th><th>City</th><th>Assigned To</th><th>Created</th><th>First Call</th><th>Delta</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="text-white">Gregory Schofield</td><td>Tallahassee</td>
+            <td class="text-purple">Michell</td><td>8:13 AM</td><td>8:11 AM</td>
+            <td><span class="status-badge up">📞 INBOUND</span></td>
+            <td>Contact Made</td>
+          </tr>
+          <tr>
+            <td class="text-white">Dakota Mitchell</td><td>Disputanta, VA</td>
+            <td class="text-purple">Michell</td><td>9:25 AM</td><td>—</td>
+            <td><span class="status-badge down">⚠️ NO CALLS</span></td>
+            <td>Attempted</td>
+          </tr>
+          <tr>
+            <td class="text-white">Ezequiel Taque</td><td>FL</td>
+            <td class="text-purple">Liz</td><td>9:57 AM</td><td>10:02 AM</td>
+            <td><span style="color:#34d399; font-weight:700;">5 min ⚡</span></td>
+            <td>Attempted</td>
+          </tr>
+          <tr>
+            <td class="text-white">Krisropher Way</td><td>FL</td>
+            <td class="text-purple">Cole</td><td>10:26 AM</td><td>10:27 AM</td>
+            <td><span style="color:#34d399; font-weight:700;">1 min 🔥</span></td>
+            <td>Not Interested</td>
+          </tr>
+          <tr>
+            <td class="text-white">Daniela Brown</td><td>St. Pete</td>
+            <td class="text-purple">Michell</td><td>10:29 AM</td><td>10:32 AM</td>
+            <td><span style="color:#34d399; font-weight:700;">3 min 🔥</span></td>
+            <td>Contact Made</td>
+          </tr>
+          <tr>
+            <td class="text-white">Kelsey Alm</td><td>FL</td>
+            <td class="text-purple">Michell</td><td>9:49 AM</td><td>10:51 AM</td>
+            <td><span style="color:#fbbf24; font-weight:700;">62 min ⚠️</span></td>
+            <td>Attempted</td>
+          </tr>
+          <tr>
+            <td class="text-white">Robert Bly</td><td>Sarasota</td>
+            <td class="text-purple">Liz</td><td>11:18 AM</td><td>11:19 AM</td>
+            <td><span style="color:#34d399; font-weight:700;">1 min 🔥</span></td>
+            <td>Contact Made</td>
+          </tr>
+          <tr>
+            <td class="text-white">Eric Hopper</td><td>FL</td>
+            <td class="text-purple">Michell</td><td>2:31 PM</td><td>3:31 PM</td>
+            <td><span style="color:#fbbf24; font-weight:700;">60 min ⚠️</span></td>
+            <td>Attempted</td>
+          </tr>
+          <tr>
+            <td class="text-white">Joni Auel</td><td>Lakeland</td>
+            <td class="text-purple">Michell</td><td>2:57 PM</td><td>2:56 PM</td>
+            <td><span class="status-badge up">📞 INBOUND</span></td>
+            <td>Contact Made</td>
+          </tr>
+          <tr>
+            <td class="text-white">Daniel Hubbard</td><td>FL</td>
+            <td class="text-purple">Liz</td><td>3:01 PM</td><td>1:26 PM</td>
+            <td><span class="status-badge up">📞 INBOUND</span></td>
+            <td>Contact Made</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. Phone-Only Leads -->
+    <div class="box" style="margin-top: 16px;">
+      <h3 style="color: #818cf8; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📞 Phone-Only Leads <span style="font-size: 11px; color: #666; font-weight: 400; text-transform: none;">(Inbound >2 min, no form submitted)</span></h3>
+      <p style="font-size: 12px; color: #555; margin-bottom: 16px;">All calls via 🌐 Direct/Organic — zero through AdWords line (800-229-7131)</p>
+      <table>
+        <thead><tr><th>Time</th><th>Caller</th><th>Agent</th><th>Talk Time</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>7:39 AM</td><td class="text-white">727-815-6091</td><td class="text-purple">Cole</td><td class="text-blue">3:21</td><td>🌐 Direct</td></tr>
+          <tr><td>7:53 AM</td><td class="text-white">215-881-3636</td><td class="text-purple">Liz</td><td class="text-blue">3:24</td><td>🌐 Direct</td></tr>
+          <tr><td>8:14 AM</td><td class="text-white">813-545-1665</td><td class="text-purple">Cole</td><td class="text-blue">2:52</td><td>🌐 Direct</td></tr>
+          <tr><td>9:17 AM</td><td class="text-white">661-996-2216</td><td class="text-purple">Liz</td><td class="text-blue">17:55</td><td>🌐 Direct</td></tr>
+          <tr><td>10:00 AM</td><td class="text-white">561-584-0929</td><td class="text-purple">Michell</td><td class="text-blue">16:21</td><td>🌐 Direct</td></tr>
+          <tr><td>10:08 AM</td><td class="text-white">772-388-0088</td><td class="text-purple">Liz</td><td class="text-blue">2:05</td><td>🌐 Direct</td></tr>
+          <tr><td>10:14 AM</td><td class="text-white">804-401-2203</td><td class="text-purple">Liz</td><td class="text-blue">2:18</td><td>🌐 Direct</td></tr>
+          <tr><td>11:38 AM</td><td class="text-white">239-530-8756</td><td class="text-purple">Michell</td><td class="text-blue">4:08</td><td>🌐 Direct</td></tr>
+          <tr><td>11:49 AM</td><td class="text-white">407-795-1108</td><td class="text-purple">Michell</td><td class="text-blue">30:06</td><td>🌐 Direct</td></tr>
+          <tr><td>12:08 PM</td><td class="text-white">561-446-3077</td><td class="text-purple">Michell</td><td class="text-blue">16:26</td><td>🌐 Direct</td></tr>
+          <tr><td>2:09 PM</td><td class="text-white">386-402-2455</td><td class="text-purple">Liz</td><td class="text-blue">7:38</td><td>🌐 Direct</td></tr>
+          <tr><td>2:19 PM</td><td class="text-white">407-530-6856</td><td class="text-purple">Liz</td><td class="text-blue">2:14</td><td>🌐 Direct</td></tr>
+          <tr><td>2:21 PM</td><td class="text-white">352-699-1546</td><td class="text-purple">Cole</td><td class="text-blue">6:50</td><td>🌐 Direct</td></tr>
+          <tr><td>3:00 PM</td><td class="text-white">727-494-6775</td><td class="text-purple">Liz</td><td class="text-blue">3:36</td><td>🌐 Direct</td></tr>
+          <tr><td>3:22 PM</td><td class="text-white">409-300-2142</td><td class="text-purple">Michell</td><td class="text-blue">13:38</td><td>🌐 Direct</td></tr>
+          <tr><td>3:36 PM</td><td class="text-white">409-300-2142</td><td class="text-purple">Michell</td><td class="text-blue">2:39</td><td>🌐 Direct</td></tr>
+          <tr><td>3:41 PM</td><td class="text-white">862-279-4004</td><td class="text-purple">Michell</td><td class="text-blue">5:55</td><td>🌐 Direct</td></tr>
+          <tr><td>5:56 PM</td><td class="text-white">443-842-0461</td><td class="text-purple">Cole</td><td class="text-blue">15:15</td><td>🌐 Direct</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px; padding: 12px 16px; background: rgba(96,165,250,0.06); border-radius: 8px; font-size: 12px; color: #888;">
+        <strong style="color:#60a5fa;">Agent Totals:</strong>&nbsp;&nbsp;
+        Liz: 7 calls (39 min total) &nbsp;|&nbsp; 
+        Michell: 7 calls (89 min total) &nbsp;|&nbsp; 
+        Cole: 4 calls (28 min total)
+      </div>
+    </div>
+
+    <!-- 4. Agent Response Summary -->
+    <div class="box" style="margin-top: 16px;">
+      <h3 style="color: #818cf8; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Agent Response Summary</h3>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Liz Calvo</div>
+          <div style="font-size: 13px; color: #888;">3 form leads · 7 phone leads</div>
+          <div style="font-size: 24px; font-weight: 800; color: #34d399; margin-top: 4px;">3 min avg ⚡</div>
+          <div style="font-size: 11px; color: #666; margin-top: 4px;">Best: 1 min (Robert Bly)</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Cole Thogmartin</div>
+          <div style="font-size: 13px; color: #888;">1 form lead · 4 phone leads</div>
+          <div style="font-size: 24px; font-weight: 800; color: #34d399; margin-top: 4px;">1 min 🔥</div>
+          <div style="font-size: 11px; color: #666; margin-top: 4px;">Instant response</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 600; color: #fff; margin-bottom: 8px;">Michell Velasquez</div>
+          <div style="font-size: 13px; color: #888;">6 form leads · 7 phone leads</div>
+          <div style="font-size: 24px; font-weight: 800; color: #fbbf24; margin-top: 4px;">42 min avg ⚠️</div>
+          <div style="font-size: 11px; color: #666; margin-top: 4px;">Best: 3 min · Worst: 62 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Top Keywords -->
+  <div class="section">
+    <div class="section-title">🔑 <span>Top Keywords</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>Keyword</th><th>Clicks</th><th>Cost</th><th>Conv</th><th>CTR</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">fr44 insurance florida</td><td class="text-blue">12</td><td class="text-orange">$81.50</td><td class="text-green">3</td><td>5.85%</td></tr>
+          <tr><td class="text-white">fr44 insurance</td><td class="text-blue">4</td><td class="text-orange">$31.31</td><td class="text-dim">0</td><td>12.90%</td></tr>
+          <tr><td class="text-white">non owner fr44 insurance</td><td class="text-blue">4</td><td class="text-orange">$31.47</td><td class="text-green">4</td><td>3.39%</td></tr>
+          <tr><td class="text-white">cheap fr44 insurance</td><td class="text-blue">3</td><td class="text-orange">$23.28</td><td class="text-dim">0</td><td>6.67%</td></tr>
+          <tr><td class="text-white">how to reinstate suspended license FL</td><td class="text-blue">2</td><td class="text-orange">$19.18</td><td class="text-green">2</td><td>8.70%</td></tr>
+          <tr><td class="text-white">non owner fr44 insurance florida</td><td class="text-blue">1</td><td class="text-orange">$9.03</td><td class="text-green">1</td><td>9.09%</td></tr>
+          <tr><td class="text-white">license reinstatement florida</td><td class="text-blue">1</td><td class="text-orange">$9.72</td><td class="text-dim">0</td><td>5.00%</td></tr>
+          <tr><td class="text-white">fr44 filing florida</td><td class="text-blue">1</td><td class="text-orange">$8.84</td><td class="text-dim">0</td><td>1.79%</td></tr>
+          <tr><td class="text-white">suspended license florida</td><td class="text-blue">1</td><td class="text-orange">$8.81</td><td class="text-dim">0</td><td>11.11%</td></tr>
+          <tr><td class="text-white">i can't afford fr44 insurance</td><td class="text-blue">1</td><td class="text-orange">$7.54</td><td class="text-dim">0</td><td>100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 6. Top Search Terms -->
+  <div class="section">
+    <div class="section-title">🔍 <span>Top Search Terms</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>Search Term</th><th>Clicks</th><th>Cost</th><th>Conv</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">fr44 insurance florida monthly payments</td><td class="text-blue">2</td><td class="text-orange">$13.24</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">how to fix a suspended license in florida</td><td class="text-blue">1</td><td class="text-orange">$9.41</td><td class="text-green">2</td></tr>
+          <tr><td class="text-white">how to reinstate a suspended license in florida</td><td class="text-blue">1</td><td class="text-orange">$9.77</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">how do i reinstate my suspended license in florida</td><td class="text-blue">1</td><td class="text-orange">$9.72</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">fr44 non owner insurance florida</td><td class="text-blue">1</td><td class="text-orange">$9.03</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">non owner car insurance quote</td><td class="text-blue">1</td><td class="text-orange">$8.66</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">first daytona tag agency</td><td class="text-blue">1</td><td class="text-orange">$8.84</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">is my dl suspended fl</td><td class="text-blue">1</td><td class="text-orange">$8.81</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">what is a fr44</td><td class="text-blue">1</td><td class="text-orange">$7.87</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">i can t afford fr44 insurance</td><td class="text-blue">1</td><td class="text-orange">$7.54</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">florida insurance affidavit</td><td class="text-blue">1</td><td class="text-orange">$7.13</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">what is an fr 44</td><td class="text-blue">1</td><td class="text-orange">$5.66</td><td class="text-dim">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. Hourly Performance -->
+  <div class="section">
+    <div class="section-title">⏰ <span>Hourly Performance</span></div>
+    <div class="box">
+      <div class="hourly-grid">
+        <div class="hour-cell peak"><div class="time">8 AM</div><div class="clicks">6</div><div class="spend">$41.65</div><div class="conv">1 conv</div></div>
+        <div class="hour-cell"><div class="time">9 AM</div><div class="clicks">4</div><div class="spend">$32.49</div><div class="conv">3 conv</div></div>
+        <div class="hour-cell"><div class="time">10 AM</div><div class="clicks">5</div><div class="spend">$43.86</div><div class="conv">3 conv</div></div>
+        <div class="hour-cell"><div class="time">11 AM</div><div class="clicks">3</div><div class="spend">$23.37</div><div class="conv">2 conv</div></div>
+        <div class="hour-cell"><div class="time">12 PM</div><div class="clicks">5</div><div class="spend">$38.43</div><div class="conv">0 conv</div></div>
+        <div class="hour-cell"><div class="time">1 PM</div><div class="clicks">0</div><div class="spend">$0</div><div class="conv">0 conv</div></div>
+        <div class="hour-cell peak"><div class="time">2 PM</div><div class="clicks">6</div><div class="spend">$45.31</div><div class="conv">1 conv</div></div>
+        <div class="hour-cell"><div class="time">3 PM</div><div class="clicks">2</div><div class="spend">$12.62</div><div class="conv">0 conv</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Geographic -->
+  <div class="section">
+    <div class="section-title">📍 <span>Top Cities</span></div>
+    <div class="box">
+      <table>
+        <thead><tr><th>City</th><th>Clicks</th><th>Cost</th><th>Conv</th></tr></thead>
+        <tbody>
+          <tr><td class="text-white">Tallahassee</td><td class="text-blue">2</td><td class="text-orange">$17.26</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Orlando</td><td class="text-blue">2</td><td class="text-orange">$15.65</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Tampa</td><td class="text-blue">2</td><td class="text-orange">$14.95</td><td class="text-green">2</td></tr>
+          <tr><td class="text-white">Miami</td><td class="text-blue">2</td><td class="text-orange">$14.18</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Englewood</td><td class="text-blue">2</td><td class="text-orange">$13.24</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Jacksonville</td><td class="text-blue">2</td><td class="text-orange">$11.31</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Ocala</td><td class="text-blue">1</td><td class="text-orange">$9.77</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Fort Lauderdale</td><td class="text-blue">1</td><td class="text-orange">$9.49</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">West Palm Beach</td><td class="text-blue">1</td><td class="text-orange">$9.41</td><td class="text-green">2</td></tr>
+          <tr><td class="text-white">St. Petersburg</td><td class="text-blue">1</td><td class="text-orange">$9.32</td><td class="text-green">2</td></tr>
+          <tr><td class="text-white">Port St. Lucie</td><td class="text-blue">1</td><td class="text-orange">$9.18</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">Hialeah</td><td class="text-blue">1</td><td class="text-orange">$9.03</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">Kissimmee</td><td class="text-blue">1</td><td class="text-orange">$9.41</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Daytona Beach</td><td class="text-blue">1</td><td class="text-orange">$8.84</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">North Port</td><td class="text-blue">1</td><td class="text-orange">$8.66</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">Gainesville</td><td class="text-blue">1</td><td class="text-orange">$8.81</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Spring Hill</td><td class="text-blue">1</td><td class="text-orange">$8.37</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Pembroke Pines</td><td class="text-blue">1</td><td class="text-orange">$8.37</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Lehigh Acres</td><td class="text-blue">1</td><td class="text-orange">$7.83</td><td class="text-green">1</td></tr>
+          <tr><td class="text-white">Palm Bay</td><td class="text-blue">1</td><td class="text-orange">$7.00</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Lakeland</td><td class="text-blue">1</td><td class="text-orange">$6.23</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Poinciana</td><td class="text-blue">1</td><td class="text-orange">$5.65</td><td class="text-dim">0</td></tr>
+          <tr><td class="text-white">Cape Coral</td><td class="text-blue">1</td><td class="text-orange">$4.25</td><td class="text-dim">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    Generated by <span>Blade</span> · FR44 & SR22 Experts · Saturday, March 7, 2026
+  </div>
+
+</div>
+</body>
+</html>
