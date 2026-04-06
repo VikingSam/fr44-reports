@@ -45,12 +45,17 @@ iframe#report-frame { flex: 1; border: none; background: #0d0f18; }
 
 <div class="layout">
   <div class="sidebar">
-    <div class="sidebar-header">Reports (16)</div>
+    <div class="sidebar-header">Reports (17)</div>
     <table class="report-list">
       <thead>
         <tr><th>Date</th><th>Spend</th><th>Conv</th></tr>
       </thead>
                   <tbody>
+    <tr onclick="loadReport('daily-pretty-2026-04-05.html')" class="report-row active" data-file="daily-pretty-2026-04-05.html">
+      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Apr 5</span></div></td>
+      <td><span style="color:#22c55e">$30.43</span></td>
+      <td><span style="color:#60a5fa">1</span></td>
+    </tr>
     <tr onclick="loadReport('daily-pretty-2026-04-04.html')" class="report-row active" data-file="daily-pretty-2026-04-04.html">
       <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Apr 4</span></div></td>
       <td><span style="color:#22c55e">$21.80</span></td>
