@@ -45,12 +45,20 @@ iframe#report-frame { flex: 1; border: none; background: #0d0f18; }
 
 <div class="layout">
   <div class="sidebar">
-    <div class="sidebar-header">Reports (18)</div>
+    <div class="sidebar-header">Reports (20)</div>
     <table class="report-list">
       <thead>
         <tr><th>Date</th><th>Spend</th><th>Conv</th></tr>
       </thead>
                   <tbody>
+    <tr onclick="loadReport('daily-pretty-2026-04-07.html')" class="report-row active" data-file="daily-pretty-2026-04-07.html">
+      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Apr 7</span></div></td>
+      <td><span style="color:#22c55e">$826.05</span></td>
+      <td><span style="color:#60a5fa">1</span></td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-04-03.html')" class="report-row" data-file="daily-pretty-2026-04-03.html">
+    <tr onclick="loadReport('daily-pretty-2026-04-01.html')" class="report-row" data-file="daily-pretty-2026-04-01.html">
+    <tr onclick="loadReport('daily-pretty-2026-03-22.html')" class="report-row" data-file="daily-pretty-2026-03-22.html">
     <tr onclick="loadReport('daily-pretty-2026-04-06.html')" class="report-row active" data-file="daily-pretty-2026-04-06.html">
       <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Apr 6</span></div></td>
       <td><span style="color:#22c55e">$1,049.17</span></td>
@@ -65,6 +73,11 @@ iframe#report-frame { flex: 1; border: none; background: #0d0f18; }
       <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Apr 4</span></div></td>
       <td><span style="color:#22c55e">$21.80</span></td>
       <td><span style="color:#60a5fa">0</span></td>
+    </tr>
+    <tr onclick="loadReport('daily-pretty-2026-04-02.html')" class="report-row active" data-file="daily-pretty-2026-04-02.html">
+      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Apr 2</span></div></td>
+      <td><span style="color:#22c55e">—</span></td>
+      <td>—</td>
     </tr>
     <tr onclick="loadReport('daily-pretty-2026-03-31.html')" class="report-row active" data-file="daily-pretty-2026-03-31.html">
       <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Mar 31</span></div></td>
