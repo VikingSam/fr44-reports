@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR44 Daily Monday, April 13, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#0f1117;color:#e1e4ea;padding:40px 20px;line-height:1.6}
+.container{max-width:1000px;margin:0 auto}
+.header{text-align:center;margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.header h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:6px}
+.header .subtitle{font-size:15px;color:#8b8fa3}
+.header .date{font-size:18px;color:#60a5fa;font-weight:600;margin-top:12px}
+.summary-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:36px}
+.summary-card{background:linear-gradient(135deg,#1a1d27,#1e2130);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px;text-align:center}
+.summary-card .number{font-size:32px;font-weight:700;color:#fff;line-height:1}
+.summary-card .label{font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
+.summary-card .sublabel{font-size:10px;color:#555;margin-top:3px}
+.summary-card.green .number{color:#34d399}
+.summary-card.blue .number{color:#60a5fa}
+.summary-card.yellow .number{color:#fbbf24}
+.summary-card.red .number{color:#f87171}
+.summary-card.purple .number{color:#c4b5fd}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.section-header h2{font-size:18px;font-weight:600;color:#fff}
+.badge{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.blue{background:#1e3a5f;color:#60a5fa}
+.badge.green{background:#1a3a2a;color:#34d399}
+.badge.yellow{background:#3a3520;color:#fbbf24}
+.badge.red{background:#3a1a1a;color:#f87171}
+table{width:100%;border-collapse:collapse;background:#1a1d27;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+thead th{background:#1e2130;padding:11px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#8b8fa3;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+tbody td{padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(96,165,250,.04)}
+.status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.status.made{background:#1a3a2a;color:#34d399}
+.status.attempted{background:#1e3a5f;color:#60a5fa}
+.status.not-interested{background:#3a1a1a;color:#f87171}
+.status.sold{background:#2a1a3a;color:#c4b5fd}
+.status.other{background:#2a2a2a;color:#8b8fa3}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+.agent-card{background:linear-gradient(135deg,#1a1d27,#1e2130);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px}
+.agent-card .agent-name-lg{font-size:16px;font-weight:600;color:#fff;margin-bottom:12px}
+.agent-stat{display:flex;justify-content:space-between;padding:4px 0;font-size:13px}
+.agent-stat .stat-label{color:#8b8fa3}
+.agent-stat .stat-value{color:#e1e4ea;font-weight:500}
+.bar-container{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:12px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-fill.liz{background:linear-gradient(90deg,#818cf8,#c4b5fd)}
+.bar-fill.cole{background:linear-gradient(90deg,#34d399,#6ee7b7)}
+.bar-fill.michell{background:linear-gradient(90deg,#60a5fa,#93c5fd)}
+.aw-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.aw-card{background:#1a1d27;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;text-align:center}
+.aw-card .aw-number{font-size:24px;font-weight:700;color:#60a5fa}
+.aw-card .aw-label{font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:.8px;margin-top:5px}
+.footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:#555}
+@media(max-width:768px){
+  .summary-grid{grid-template-columns:repeat(3,1fr)}
+  .agent-grid{grid-template-columns:1fr}
+  .aw-grid{grid-template-columns:repeat(3,1fr)}
+  table{font-size:12px}
+  thead th,tbody td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>FR44 &amp; SR22 Experts</h1>
+  <div class="subtitle">Daily Lead &amp; Call Report</div>
+  <div class="date">Monday, April 13, 2026</div>
+</div>
+
+<!-- Summary Cards -->
+<div class="summary-grid">
+  <div class="summary-card blue">
+    <div class="number">51</div>
+    <div class="label">New Leads</div>
+    <div class="sublabel">11 dupes excluded</div>
+  </div>
+  <div class="summary-card green">
+    <div class="number">34</div>
+    <div class="label">Conversions</div>
+    <div class="sublabel">$40.26 CPA</div>
+  </div>
+  <div class="summary-card" style="border-color:rgba(52,211,153,.2)">
+    <div class="number" style="color:#34d399">2m</div>
+    <div class="label">Avg Response Time</div>
+  </div>
+  <div class="summary-card purple">
+    <div class="number">$1,368.70</div>
+    <div class="label">Ad Spend</div>
+    <div class="sublabel">69 clicks · 8.8% CTR</div>
+  </div>
+  <div class="summary-card">
+    <div class="number">0</div>
+    <div class="label">Qualified Calls</div>
+    <div class="sublabel">inbound &gt;2 min to agent</div>
+  </div>
+</div>
+
+<!-- Agent Performance -->
+<div class="section">
+  <div class="section-header"><h2>📋 Agent Performance</h2></div>
+  <div class="agent-grid"><div class="agent-card">
+      <div class="agent-name-lg">Liz</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">14</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#34d399">2m</span></div>
+      <div class="bar-container"><div class="bar-fill liz" style="width:67%"></div></div>
+    </div><div class="agent-card">
+      <div class="agent-name-lg">Cole</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">15</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#34d399">1m</span></div>
+      <div class="bar-container"><div class="bar-fill cole" style="width:71%"></div></div>
+    </div><div class="agent-card">
+      <div class="agent-name-lg">Michell</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">21</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#34d399">3m</span></div>
+      <div class="bar-container"><div class="bar-fill michell" style="width:100%"></div></div>
+    </div></div>
+</div>
+
+<!-- Lead Response Times -->
+<div class="section">
+  <div class="section-header">
+    <h2>🎯 Lead Response Times</h2>
+    <span class="badge blue">51 leads</span>
+    
+    <span class='badge yellow'>Slowest: 24m</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Lead</th>
+        <th>Agent</th>
+        <th>Coverage</th>
+        <th>Lead In</th>
+        <th>Assigned</th>
+        <th>First Action</th>
+        <th>Response</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td><strong>Samuel Serrano</strong><br><span style="color:#8b8fa3;font-size:11px">Port Richey, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px">SR22/FR44</td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">8:53 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">8:55 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">8:55 AM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">Pending</span></td>
+    </tr><tr>
+      <td><strong>Eric Coyne</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">9:03 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">9:03 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">9:03 AM</td>
+      <td style="font-weight:700;color:#34d399">0m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Amanda Pollack</strong><br><span style="color:#8b8fa3;font-size:11px">OH</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">9:05 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">9:05 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">9:05 AM</td>
+      <td style="font-weight:700;color:#34d399">0m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>sean Flynn</strong><br><span style="color:#8b8fa3;font-size:11px">saint petersburg, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">9:23 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">9:23 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">9:23 AM</td>
+      <td style="font-weight:700;color:#34d399">0m</td>
+      <td><span class="status made">Contact Made</span></td>
+    </tr><tr>
+      <td><strong>Joshua Thomas</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">9:34 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">9:39 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">9:39 AM</td>
+      <td style="font-weight:700;color:#34d399">5m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>carol ruggiero</strong><br><span style="color:#8b8fa3;font-size:11px">sarassota, AK</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">10:23 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">10:23 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">10:23 AM</td>
+      <td style="font-weight:700;color:#34d399">0m</td>
+      <td><span class="status made">Contact Made</span></td>
+    </tr><tr>
+      <td><strong>Rafael Olvera</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">10:28 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">10:31 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">10:31 AM</td>
+      <td style="font-weight:700;color:#34d399">3m</td>
+      <td><span class="status made">Contact Made</span></td>
+    </tr><tr>
+      <td><strong>Damion Smith</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">10:54 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">10:54 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">10:54 AM</td>
+      <td style="font-weight:700;color:#34d399">0m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Katherine Adams</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">11:21 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">11:23 AM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">11:23 AM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Zachary O'Callaghan</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">12:06 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">12:09 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">12:09 PM</td>
+      <td style="font-weight:700;color:#34d399">3m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong></strong><br><span style="color:#8b8fa3;font-size:11px"></span></td>
+      <td><span style="color:#8b8fa3;font-weight:600">Unassigned</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">1:01 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">—</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">—</td>
+      <td style="font-weight:700;color:#8b8fa3">—</td>
+      <td><span class="status other">Unknown</span></td>
+    </tr><tr>
+      <td><strong>June Heileman</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">1:24 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">1:46 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">1:48 PM</td>
+      <td style="font-weight:700;color:#f87171">24m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Sandra Watson</strong><br><span style="color:#8b8fa3;font-size:11px">FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">2:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">2:19 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">—</td>
+      <td style="font-weight:700;color:#8b8fa3">—</td>
+      <td><span class="status not-interested">Not Interested</span></td>
+    </tr><tr>
+      <td><strong>Kailey Anderson</strong><br><span style="color:#8b8fa3;font-size:11px">Boynton Beach, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:10 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:25 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Kelley Goble</strong><br><span style="color:#8b8fa3;font-size:11px">Fernandina Beach, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:12 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Keena Burr</strong><br><span style="color:#8b8fa3;font-size:11px">Interlachen, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:14 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Ariel Mellman</strong><br><span style="color:#8b8fa3;font-size:11px">Bonita Springs, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:14 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Kacey Edwards</strong><br><span style="color:#8b8fa3;font-size:11px">Ocala, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:14 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Pavlo Shmonin</strong><br><span style="color:#8b8fa3;font-size:11px">north port, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:15 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Christian Giubilato</strong><br><span style="color:#8b8fa3;font-size:11px">Wellington, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:15 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Brandon Kincaid</strong><br><span style="color:#8b8fa3;font-size:11px">Deltona, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:16 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Jaimie Amaya</strong><br><span style="color:#8b8fa3;font-size:11px">Gulfport, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px">SR22/FR44</td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:14 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">Pending</span></td>
+    </tr><tr>
+      <td><strong>Michael Lombardo</strong><br><span style="color:#8b8fa3;font-size:11px">West palm beach, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:16 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Amanda Fanelli</strong><br><span style="color:#8b8fa3;font-size:11px">Pompano Beach, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:17 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Morgan Mau</strong><br><span style="color:#8b8fa3;font-size:11px">Callahan, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong></strong><br><span style="color:#8b8fa3;font-size:11px">AK</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:18 PM</td>
+      <td style="font-weight:700;color:#fbbf24">7m</td>
+      <td><span class="status other">No Companies to Quote</span></td>
+    </tr><tr>
+      <td><strong></strong><br><span style="color:#8b8fa3;font-size:11px">AK</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:18 PM</td>
+      <td style="font-weight:700;color:#fbbf24">7m</td>
+      <td><span class="status other">No Companies to Quote</span></td>
+    </tr><tr>
+      <td><strong>Joseph Raymond Wakhungu</strong><br><span style="color:#8b8fa3;font-size:11px">North Miami, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>GUITO JEAN BAPTISTE</strong><br><span style="color:#8b8fa3;font-size:11px">BOYNTON BEACH, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Lindsey Wilson</strong><br><span style="color:#8b8fa3;font-size:11px">Osprey, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:19 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status not-interested">Not Interested</span></td>
+    </tr><tr>
+      <td><strong>Robert Mathis</strong><br><span style="color:#8b8fa3;font-size:11px">Chicago, IL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:20 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Eric Cupps</strong><br><span style="color:#8b8fa3;font-size:11px">Land O Lakes, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:20 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Brian Poynor</strong><br><span style="color:#8b8fa3;font-size:11px">Panama City, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:20 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status not-interested">Not Interested</span></td>
+    </tr><tr>
+      <td><strong>Nickolas Schild</strong><br><span style="color:#8b8fa3;font-size:11px">Dunedin, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:21 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Christopher Gray</strong><br><span style="color:#8b8fa3;font-size:11px">Palm Bay, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:21 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Tasha Ricks</strong><br><span style="color:#8b8fa3;font-size:11px">Jacksonville, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:22 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>John Swartz</strong><br><span style="color:#8b8fa3;font-size:11px">tampa, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px">SR22/FR44</td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:18 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">Pending</span></td>
+    </tr><tr>
+      <td><strong>Michael Stamps</strong><br><span style="color:#8b8fa3;font-size:11px">Pensacola, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:23 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>DUSTI SIMMONS</strong><br><span style="color:#8b8fa3;font-size:11px">LAUREL HILL, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:23 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Jalen Rivera</strong><br><span style="color:#8b8fa3;font-size:11px">Cape coral, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:23 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Josh Watts</strong><br><span style="color:#8b8fa3;font-size:11px">Clearwater, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:23 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Edward Pierce</strong><br><span style="color:#8b8fa3;font-size:11px">Milton, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:24 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Jordan Bazzell</strong><br><span style="color:#8b8fa3;font-size:11px">Holiday, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:24 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status attempted">Attempted</span></td>
+    </tr><tr>
+      <td><strong>Justin Jackson</strong><br><span style="color:#8b8fa3;font-size:11px">Panama City, FL</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px">SR22/FR44</td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:23 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">Pending</span></td>
+    </tr><tr>
+      <td><strong>Mehmet Ozkurt</strong><br><span style="color:#8b8fa3;font-size:11px">Boynton Beach, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:12 PM</td>
+      <td style="font-weight:700;color:#34d399">1m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong></strong><br><span style="color:#8b8fa3;font-size:11px"></span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">—</td>
+      <td style="font-weight:700;color:#8b8fa3">—</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>peter merritt</strong><br><span style="color:#8b8fa3;font-size:11px">stuart, FL</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Allison Foley</strong><br><span style="color:#8b8fa3;font-size:11px">Gainesville, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Christopher Forbs</strong><br><span style="color:#8b8fa3;font-size:11px">Houston, TX</span></td>
+      <td><span style="color:#34d399;font-weight:600">Cole</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>DORISHA MASON</strong><br><span style="color:#8b8fa3;font-size:11px">LAS VEGAS, NV</span></td>
+      <td><span style="color:#60a5fa;font-weight:600">Michell</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr><tr>
+      <td><strong>Austin Buch</strong><br><span style="color:#8b8fa3;font-size:11px">New Port Richey, FL</span></td>
+      <td><span style="color:#818cf8;font-weight:600">Liz</span></td>
+      <td style="font-size:12px"></td>
+      <td style="font-family:monospace;font-size:12px;color:#c4b5fd">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#8b8fa3">4:11 PM</td>
+      <td style="font-family:monospace;font-size:12px;color:#93c5fd">4:13 PM</td>
+      <td style="font-weight:700;color:#34d399">2m</td>
+      <td><span class="status other">New Lead</span></td>
+    </tr></tbody>
+  </table>
+</div>
+
+<!-- AdWords Section -->
+<div class="section">
+  <div class="section-header">
+    <h2>📊 AdWords Performance</h2>
+    <span class="badge blue">FR44 - Landing Page - Claude</span>
+  </div>
+  <div class="aw-grid">
+    <div class="aw-card"><div class="aw-number">$1,368.70</div><div class="aw-label">Spend</div></div>
+    <div class="aw-card"><div class="aw-number">69</div><div class="aw-label">Clicks</div></div>
+    <div class="aw-card"><div class="aw-number">784</div><div class="aw-label">Impressions</div></div>
+    <div class="aw-card"><div class="aw-number">34.0</div><div class="aw-label">Conversions</div></div>
+    <div class="aw-card"><div class="aw-number">$40.26</div><div class="aw-label">CPA</div></div>
+  </div>
+</div>
+
+<!-- Hourly Performance -->
+<div class="section">
+  <div class="section-header"><h2>⏰ Hourly Performance</h2></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Hour</th>
+        <th style="text-align:center">Clicks</th>
+        <th style="text-align:center">Impressions</th>
+        <th style="text-align:right">Spend</th>
+        <th style="text-align:center">Conversions</th>
+        <th style="text-align:right">CPA</th>
+        <th style="text-align:center">Inbound Calls</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td style="font-weight:600">8 AM</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">102</td>
+      <td style="text-align:right">$184.02</td>
+      <td style="text-align:center">2.0</td>
+      <td style="text-align:right">$92.01</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">9 AM</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">78</td>
+      <td style="text-align:right">$161.53</td>
+      <td style="text-align:center">2.0</td>
+      <td style="text-align:right">$80.77</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">10 AM</td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:center">87</td>
+      <td style="text-align:right">$235.87</td>
+      <td style="text-align:center">7.0</td>
+      <td style="text-align:right">$33.70</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">11 AM</td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center">61</td>
+      <td style="text-align:right">$145.37</td>
+      <td style="text-align:center">6.0</td>
+      <td style="text-align:right">$24.23</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">12 PM</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">65</td>
+      <td style="text-align:right">$97.40</td>
+      <td style="text-align:center">2.0</td>
+      <td style="text-align:right">$48.70</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">1 PM</td>
+      <td style="text-align:center">11</td>
+      <td style="text-align:center">135</td>
+      <td style="text-align:right">$192.57</td>
+      <td style="text-align:center">2.0</td>
+      <td style="text-align:right">$96.28</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">2 PM</td>
+      <td style="text-align:center">15</td>
+      <td style="text-align:center">170</td>
+      <td style="text-align:right">$238.33</td>
+      <td style="text-align:center">9.0</td>
+      <td style="text-align:right">$26.48</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="font-weight:600">3 PM</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">86</td>
+      <td style="text-align:right">$113.61</td>
+      <td style="text-align:center">4.0</td>
+      <td style="text-align:right">$28.40</td>
+      <td style="text-align:center">0</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<!-- Top Keywords -->
+<div class="section">
+  <div class="section-header">
+    <h2>🔑 Top Keywords</h2>
+    <span class="badge blue">30 keywords</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th style="text-align:center">Clicks</th>
+        <th style="text-align:center">CTR</th>
+        <th style="text-align:right">Spend</th>
+        <th style="text-align:center">Conv</th>
+        <th style="text-align:right">CPA</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td>fr44 without a car</td>
+      <td style="text-align:center">39</td>
+      <td style="text-align:center">6.3%</td>
+      <td style="text-align:right">$796.80</td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:right">$66.40</td>
+    </tr><tr>
+      <td>fr44 insurance florida</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">22.2%</td>
+      <td style="text-align:right">$201.90</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:right">$100.95</td>
+    </tr><tr>
+      <td>sr22 without a car</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">41.7%</td>
+      <td style="text-align:right">$89.41</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:right">$44.70</td>
+    </tr><tr>
+      <td>cheapest fr44 insurance in florida</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">50.0%</td>
+      <td style="text-align:right">$44.13</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>sr22 florida</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">23.8%</td>
+      <td style="text-align:right">$41.86</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:right">$13.95</td>
+    </tr><tr>
+      <td>fr44 insurance florida monthly payments</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">33.3%</td>
+      <td style="text-align:right">$39.50</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:right">$13.17</td>
+    </tr><tr>
+      <td>non owner fr44 insurance florida</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">66.7%</td>
+      <td style="text-align:right">$35.26</td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:right">$8.81</td>
+    </tr><tr>
+      <td>florida sr22 insurance</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">5.3%</td>
+      <td style="text-align:right">$33.62</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:right">$16.81</td>
+    </tr><tr>
+      <td>non owner sr22 insurance</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">33.3%</td>
+      <td style="text-align:right">$31.43</td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:right">$7.86</td>
+    </tr><tr>
+      <td>non owner sr22 insurance online</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">50.0%</td>
+      <td style="text-align:right">$18.79</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>non owner car insurance florida</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">20.0%</td>
+      <td style="text-align:right">$13.85</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>fr44 insurance florida non owners</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">50.0%</td>
+      <td style="text-align:right">$11.53</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:right">$5.76</td>
+    </tr><tr>
+      <td>florida sr22</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$10.63</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR 22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Insurance</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Insurance Form</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Cost</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Florida SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Can I Get A SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<!-- Top Cities -->
+<div class="section">
+  <div class="section-header"><h2>📍 Top Cities</h2></div>
+  <table>
+    <thead><tr><th>City</th><th style="text-align:center">Leads</th></tr></thead>
+    <tbody><tr>
+        <td class="text-white">Panama City, FL</td>
+        <td style="text-align:center;color:#60a5fa">2</td>
+      </tr><tr>
+        <td class="text-white">Boynton Beach, FL</td>
+        <td style="text-align:center;color:#60a5fa">2</td>
+      </tr><tr>
+        <td class="text-white">Port Richey, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">sarassota, AK</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">saint petersburg, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Fernandina Beach, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Interlachen, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Bonita Springs, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Ocala, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">north port, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Wellington, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Deltona, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Gulfport, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">West palm beach, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Pompano Beach, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Callahan, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">North Miami, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">BOYNTON BEACH, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Osprey, FL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr><tr>
+        <td class="text-white">Chicago, IL</td>
+        <td style="text-align:center;color:#60a5fa">1</td>
+      </tr></tbody>
+  </table>
+</div>
+
+<!-- Inbound Calls -->
+<div class="section">
+  <div class="section-header">
+    <h2>📞 Qualified Phone Leads <span style="font-size:14px;color:#8b8fa3;font-weight:normal">(≥2 min talk time, agent only)</span></h2>
+    <span class="badge blue">0 total</span>
+    <span class="badge green">0 answered</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To / Queue</th>
+        <th>Status</th>
+        <th>Duration</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Generated 2026-04-14 11:02 UTC · FR44 &amp; SR22 Experts Daily Report System
+</div>
+
+</div>
+</body>
+</html>
