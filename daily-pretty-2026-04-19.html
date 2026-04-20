@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR44 Daily Sunday, April 19, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#0f1117;color:#e1e4ea;padding:40px 20px;line-height:1.6}
+.container{max-width:1000px;margin:0 auto}
+.header{text-align:center;margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.header h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:6px}
+.header .subtitle{font-size:15px;color:#8b8fa3}
+.header .date{font-size:18px;color:#60a5fa;font-weight:600;margin-top:12px}
+.summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px}
+.summary-card{background:linear-gradient(135deg,#1a1d27,#1e2130);border:1px solid rgba(255,255,255,.06);border-top:3px solid rgba(255,255,255,.12);border-radius:12px;padding:18px;text-align:center}
+.summary-card .number{font-size:32px;font-weight:600;color:#fff;line-height:1}
+.summary-card .label{font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:500}
+.summary-card .sublabel{font-size:10px;color:#555;margin-top:3px}
+.summary-card.green{border-top-color:#34d399}
+.summary-card.blue{border-top-color:#60a5fa}
+.summary-card.yellow{border-top-color:#fbbf24}
+.summary-card.red{border-top-color:#f87171}
+.summary-card.purple{border-top-color:#c4b5fd}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.section-header h2{font-size:18px;font-weight:600;color:#fff}
+.badge{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.blue{background:#1e3a5f;color:#60a5fa}
+.badge.green{background:#1a3a2a;color:#34d399}
+.badge.yellow{background:#3a3520;color:#fbbf24}
+.badge.red{background:#3a1a1a;color:#f87171}
+table{width:100%;border-collapse:collapse;background:#1a1d27;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+thead th{background:#1e2130;padding:11px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#8b8fa3;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+tbody td{padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(96,165,250,.04)}
+.status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.status.made{background:#1a3a2a;color:#34d399}
+.status.attempted{background:#1e3a5f;color:#60a5fa}
+.status.not-interested{background:#3a1a1a;color:#f87171}
+.status.sold{background:#2a1a3a;color:#c4b5fd}
+.status.other{background:#2a2a2a;color:#8b8fa3}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+.agent-card{background:linear-gradient(135deg,#1a1d27,#1e2130);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px}
+.agent-card .agent-name-lg{font-size:16px;font-weight:600;color:#fff;margin-bottom:12px}
+.agent-stat{display:flex;justify-content:space-between;padding:4px 0;font-size:13px}
+.agent-stat .stat-label{color:#8b8fa3}
+.agent-stat .stat-value{color:#e1e4ea;font-weight:500}
+.bar-container{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:12px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-fill.liz{background:linear-gradient(90deg,#818cf8,#c4b5fd)}
+.bar-fill.cole{background:linear-gradient(90deg,#34d399,#6ee7b7)}
+.bar-fill.michell{background:linear-gradient(90deg,#60a5fa,#93c5fd)}
+.aw-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.aw-card{background:#1a1d27;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;text-align:center}
+.aw-card .aw-number{font-size:24px;font-weight:700;color:#60a5fa}
+.aw-card .aw-label{font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:.8px;margin-top:5px}
+.footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:#555}
+@media(max-width:768px){
+  .summary-grid{grid-template-columns:repeat(3,1fr)}
+  .agent-grid{grid-template-columns:1fr}
+  .aw-grid{grid-template-columns:repeat(3,1fr)}
+  table{font-size:12px}
+  thead th,tbody td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>FR44 &amp; SR22 Experts</h1>
+  <div class="subtitle">Daily Lead &amp; Call Report</div>
+  <div class="date">Sunday, April 19, 2026</div>
+</div>
+
+<!-- Summary Cards -->
+<div class="summary-grid">
+  <div class="summary-card blue">
+    <div class="number">0</div>
+    <div class="label">New Leads</div>
+    <div class="sublabel">0 dupes excluded</div>
+  </div>
+  <div class="summary-card green">
+    <div class="number">3</div>
+    <div class="label">Conversions</div>
+    <div class="sublabel">$23.34 CPA</div>
+  </div>
+  <div class="summary-card red">
+    <div class="number">—</div>
+    <div class="label">Avg Response Time</div>
+  </div>
+  <div class="summary-card yellow">
+    <div class="number">$70.03</div>
+    <div class="label">Ad Spend</div>
+    <div class="sublabel">6 clicks · 8.7% CTR</div>
+  </div>
+  <div class="summary-card purple">
+    <div class="number">0</div>
+    <div class="label">Qualified Calls</div>
+    <div class="sublabel">inbound &gt;2 min to agent</div>
+  </div>
+</div>
+
+<!-- Agent Performance -->
+<div class="section">
+  <div class="section-header"><h2>📋 Agent Performance</h2></div>
+  <div class="agent-grid"><div class="agent-card">
+      <div class="agent-name-lg">Liz</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">0</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#8b8fa3">—</span></div>
+      <div class="bar-container"><div class="bar-fill liz" style="width:0%"></div></div>
+    </div><div class="agent-card">
+      <div class="agent-name-lg">Cole</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">0</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#8b8fa3">—</span></div>
+      <div class="bar-container"><div class="bar-fill cole" style="width:0%"></div></div>
+    </div><div class="agent-card">
+      <div class="agent-name-lg">Michell</div>
+      <div class="agent-stat"><span class="stat-label">New Leads</span><span class="stat-value">0</span></div>
+      <div class="agent-stat"><span class="stat-label">Avg Response</span><span class="stat-value" style="color:#8b8fa3">—</span></div>
+      <div class="bar-container"><div class="bar-fill michell" style="width:0%"></div></div>
+    </div></div>
+</div>
+
+<!-- Lead Response Times -->
+<div class="section">
+  <div class="section-header">
+    <h2>🎯 Lead Response Times</h2>
+    <span class="badge blue">0 leads</span>
+    
+    
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Lead</th>
+        <th>Agent</th>
+        <th>Coverage</th>
+        <th>Lead In</th>
+        <th>Assigned</th>
+        <th>First Action</th>
+        <th>Response</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- AdWords Section -->
+<div class="section">
+  <div class="section-header">
+    <h2>📊 AdWords Performance</h2>
+    <span class="badge blue">All Campaigns</span>
+  </div>
+  <div class="aw-grid">
+    <div class="aw-card"><div class="aw-number">$70.03</div><div class="aw-label">Spend</div></div>
+    <div class="aw-card"><div class="aw-number">6</div><div class="aw-label">Clicks</div></div>
+    <div class="aw-card"><div class="aw-number">69</div><div class="aw-label">Impressions</div></div>
+    <div class="aw-card"><div class="aw-number">3.0</div><div class="aw-label">Conversions</div></div>
+    <div class="aw-card"><div class="aw-number">$23.34</div><div class="aw-label">CPA</div></div>
+  </div>
+
+  <!-- FR44 vs SR22 Split -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+    <div class="aw-card" style="border-top:3px solid #60a5fa">
+      <div style="font-size:14px;font-weight:600;color:#60a5fa;margin-bottom:8px">FR44 Campaigns</div>
+      <div style="display:flex;justify-content:space-around;text-align:center">
+        <div><div style="font-size:18px;font-weight:700;color:#fff">4</div><div class="aw-label">Clicks</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">1</div><div class="aw-label">Conv</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">$38.26</div><div class="aw-label">Spend</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">$38.26</div><div class="aw-label">CPA</div></div>
+      </div>
+    </div>
+    <div class="aw-card" style="border-top:3px solid #34d399">
+      <div style="font-size:14px;font-weight:600;color:#34d399;margin-bottom:8px">SR22 Campaigns</div>
+      <div style="display:flex;justify-content:space-around;text-align:center">
+        <div><div style="font-size:18px;font-weight:700;color:#fff">2</div><div class="aw-label">Clicks</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">2</div><div class="aw-label">Conv</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">$31.77</div><div class="aw-label">Spend</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#fff">$15.88</div><div class="aw-label">CPA</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FR44 Campaign Breakdown -->
+  <div style="margin-bottom:16px">
+    <div style="font-size:14px;font-weight:600;color:#60a5fa;margin-bottom:8px">FR44 Campaign Breakdown</div>
+    <table>
+      <thead><tr>
+        <th>Campaign Name</th><th style="text-align:center">Clicks</th><th style="text-align:center">Conv</th>
+        <th style="text-align:right">Spend</th><th style="text-align:right">CPA</th><th style="text-align:center">IS%</th>
+      </tr></thead>
+      <tbody><tr>
+          <td>FR44 - Landing Page - Claude</td>
+          <td style="text-align:center">4</td>
+          <td style="text-align:center">1</td>
+          <td style="text-align:right">$38.26</td>
+          <td style="text-align:right">$38.26</td>
+          <td style="text-align:center">15.0%</td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <!-- SR22 Campaign Breakdown -->
+  <div style="margin-bottom:16px">
+    <div style="font-size:14px;font-weight:600;color:#34d399;margin-bottom:8px">SR22 Campaign Breakdown</div>
+    <table>
+      <thead><tr>
+        <th>Campaign Name</th><th style="text-align:center">Clicks</th><th style="text-align:center">Conv</th>
+        <th style="text-align:right">Spend</th><th style="text-align:right">CPA</th><th style="text-align:center">IS%</th>
+      </tr></thead>
+      <tbody><tr>
+          <td>SR22 - Florida</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:center">2</td>
+          <td style="text-align:right">$31.77</td>
+          <td style="text-align:right">$15.88</td>
+          <td style="text-align:center">26.7%</td>
+        </tr></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Hourly Performance -->
+<div class="section">
+  <div class="section-header"><h2>⏰ Hourly Performance</h2></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Hour</th>
+        <th style="text-align:center">Clicks</th>
+        <th style="text-align:center">Impressions</th>
+        <th style="text-align:right">Spend</th>
+        <th style="text-align:center">Conversions</th>
+        <th style="text-align:right">CPA</th>
+        <th style="text-align:center">Inbound Calls</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td style="color:#8b8fa3">9 AM</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">14</td>
+      <td style="text-align:right">$11.17</td>
+      <td style="text-align:center">1.0</td>
+      <td style="text-align:right">$11.17</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="color:#8b8fa3">10 AM</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">14</td>
+      <td style="text-align:right">$43.30</td>
+      <td style="text-align:center">2.0</td>
+      <td style="text-align:right">$21.65</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="color:#8b8fa3">11 AM</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">18</td>
+      <td style="text-align:right">$6.22</td>
+      <td style="text-align:center">0.0</td>
+      <td style="text-align:right">—</td>
+      <td style="text-align:center">0</td>
+    </tr><tr>
+      <td style="color:#8b8fa3">12 PM</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">23</td>
+      <td style="text-align:right">$9.34</td>
+      <td style="text-align:center">0.0</td>
+      <td style="text-align:right">—</td>
+      <td style="text-align:center">0</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<!-- Top Keywords -->
+<div class="section">
+  <div class="section-header">
+    <h2>🔑 Top Keywords</h2>
+    <span class="badge blue">30 keywords</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th style="text-align:center">Clicks</th>
+        <th style="text-align:center">CTR</th>
+        <th style="text-align:right">Spend</th>
+        <th style="text-align:center">Conv</th>
+        <th style="text-align:right">CPA</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td>non owner car insurance florida</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">66.7%</td>
+      <td style="text-align:right">$22.70</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:right">$22.70</td>
+    </tr><tr>
+      <td>florida sr22 insurance</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">9.1%</td>
+      <td style="text-align:right">$18.19</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:right">$18.19</td>
+    </tr><tr>
+      <td>non owner sr22 insurance</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">20.0%</td>
+      <td style="text-align:right">$13.58</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:right">$13.58</td>
+    </tr><tr>
+      <td>cheapest fr44 insurance in florida</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">100.0%</td>
+      <td style="text-align:right">$9.34</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>fr44 without a car</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">3.2%</td>
+      <td style="text-align:right">$6.22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR 22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Insurance</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Insurance Form</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Cost</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Florida SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Can I Get A SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>How Do I Get A SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>How Do I Get An SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Where Do I Get A SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Florida SR22 Bond</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Florida SR22 Bonds</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Bond</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>SR22 Bonds</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr><tr>
+      <td>Boca Raton +SR22</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:center">0.0%</td>
+      <td style="text-align:right">$0.00</td>
+      <td style="text-align:center">0</td>
+      <td style="text-align:right">—</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<!-- Top Cities -->
+<div class="section">
+  <div class="section-header"><h2>📍 Top Cities</h2></div>
+  <table>
+    <thead><tr><th>City</th><th style="text-align:center">Leads</th></tr></thead>
+    <tbody><tr><td colspan="2" style="color:#8b8fa3;text-align:center">No lead city data</td></tr></tbody>
+  </table>
+</div>
+
+<!-- Inbound Calls -->
+<div class="section">
+  <div class="section-header">
+    <h2>📞 Qualified Phone Leads <span style="font-size:14px;color:#8b8fa3;font-weight:normal">(≥2 min talk time, agent only)</span></h2>
+    <span class="badge blue">0 total</span>
+    <span class="badge green">0 answered</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To / Queue</th>
+        <th>Status</th>
+        <th>Duration</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Generated 2026-04-20 11:01 UTC · FR44 &amp; SR22 Experts Daily Report System
+</div>
+
+</div>
+</body>
+</html>
