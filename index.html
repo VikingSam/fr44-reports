@@ -1,331 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>FR44 Daily Reports — Archive</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0f18; color: #e1e4ea; height: 100vh; display: flex; flex-direction: column; }
-.top-bar { background: #13151f; border-bottom: 1px solid rgba(255,255,255,.08); padding: 14px 20px 14px 120px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-.top-bar h1 { font-size: 16px; font-weight: 700; color: #fff; }
-.top-bar .subtitle { font-size: 12px; color: #8b8fa3; }
-.logo { font-size: 20px; }
-.layout { display: flex; flex: 1; overflow: hidden; }
-.sidebar { width: 220px; background: #13151f; border-right: 1px solid rgba(255,255,255,.08); overflow-y: auto; flex-shrink: 0; }
-.sidebar-header { padding: 14px 16px 10px; font-size: 10px; color: #8b8fa3; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.05); }
-table.report-list { width: 100%; border-collapse: collapse; }
-table.report-list thead th { padding: 8px 12px; font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.04); }
-.report-row { cursor: pointer; transition: background 0.1s; }
-.report-row:hover { background: rgba(255,255,255,.04); }
-.report-row.active { background: rgba(96,165,250,.12); border-left: 3px solid #60a5fa; }
-.report-row td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,.03); vertical-align: middle; }
-.date-cell { display: flex; flex-direction: column; }
-.day-name { font-size: 10px; color: #8b8fa3; text-transform: uppercase; letter-spacing: 0.5px; }
-.date-num { font-size: 13px; font-weight: 600; color: #e1e4ea; }
-.main-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
-.report-header { padding: 12px 20px; background: #13151f; border-bottom: 1px solid rgba(255,255,255,.05); font-size: 13px; color: #8b8fa3; flex-shrink: 0; }
-.report-header span { color: #fff; font-weight: 600; }
-iframe#report-frame { flex: 1; border: none; background: #0d0f18; }
-.no-report { flex: 1; display: flex; align-items: center; justify-content: center; color: #555; font-size: 14px; }
-</style>
-<link rel="icon" type="image/png" href="favicon.png">
-</head>
-<body>
-  <!-- Back to Portal -->
-  <a href="https://vikingsam.github.io/hq/" style="position:fixed;top:14px;right:14px;z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(10,8,4,0.85);border:1px solid #c06020;border-radius:8px;padding:7px 14px;text-decoration:none;font-family:Georgia,serif;font-size:0.78rem;font-weight:700;color:#c8973a;letter-spacing:0.08em;backdrop-filter:blur(6px);transition:all 0.2s;" onmouseover="this.style.borderColor='#ff9040';this.style.color='#ffd080'" onmouseout="this.style.borderColor='#c06020';this.style.color='#c8973a'">🛡 Portal</a>
-
-<div class="top-bar">
-  <div class="logo">🗡️</div>
-  <div>
-    <h1>FR44 Daily Reports</h1>
-    <div class="subtitle">FR44 & SR22 Experts — Report Archive</div>
-  </div>
-</div>
-
-<div class="layout">
-  <div class="sidebar">
-    <div class="sidebar-header" style="display:grid;grid-template-columns:1fr auto auto;gap:4px;padding:10px 12px;font-size:10px;color:#8b8fa3;text-transform:uppercase;letter-spacing:1px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05);"><span>Date</span><span style="color:#facc15;">Spend</span><span style="color:#4ade80;">Conv</span></div>
-    <table class="report-list">
-      <thead>
-        <tr><th>Date</th><th>Spend</th><th>Conv</th></tr>
-      </thead>
-                  <tbody>
-        <tr><td>April 23, 2026</td><td><a href="daily-pretty-2026-04-23.html">2026-04-23</a></td></tr>
-
-    <tr onclick="loadReport('daily-pretty-2026-04-23.html')" class="report-row active" data-file="daily-pretty-2026-04-23.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Apr 23</span></div></td>
-      <td><span style="color:#22c55e">$385</span></td>
-      <td><span style="color:#60a5fa">5</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-22.html')" class="report-row active" data-file="daily-pretty-2026-04-22.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Apr 22</span></div></td>
-      <td><span style="color:#22c55e">$546</span></td>
-      <td><span style="color:#60a5fa">16</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-21.html')" class="report-row active" data-file="daily-pretty-2026-04-21.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Apr 21</span></div></td>
-      <td><span style="color:#22c55e">$538</span></td>
-      <td><span style="color:#60a5fa">9</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-20.html')" class="report-row active" data-file="daily-pretty-2026-04-20.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Apr 20</span></div></td>
-      <td><span style="color:#22c55e">$756</span></td>
-      <td><span style="color:#60a5fa">12</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-19.html')" class="report-row active" data-file="daily-pretty-2026-04-19.html">
-      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Apr 19</span></div></td>
-      <td><span style="color:#fbbf24">$70</span></td>
-      <td><span style="color:#60a5fa">3</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-18.html')" class="report-row active" data-file="daily-pretty-2026-04-18.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Apr 18</span></div></td>
-      <td><span style="color:#fbbf24">$252.43</span></td>
-      <td><span style="color:#60a5fa">4</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-17.html')" class="report-row active" data-file="daily-pretty-2026-04-17.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Apr 17</span></div></td>
-      <td><span style="color:#fbbf24">$670</span></td>
-      <td><span style="color:#60a5fa">7</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-16.html')" class="report-row" data-file="daily-pretty-2026-04-16.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Apr 16</span></div></td>
-      <td><span style="color:#fbbf24">$764.38</span></td>
-      <td><span style="color:#60a5fa">13</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-15.html')" class="report-row" data-file="daily-pretty-2026-04-15.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Apr 15</span></div></td>
-      <td><span style="color:#fbbf24">$875.48</span></td>
-      <td><span style="color:#60a5fa">21</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-14.html')" class="report-row" data-file="daily-pretty-2026-04-14.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Apr 14</span></div></td>
-      <td><span style="color:#fbbf24">$1,374.12</span></td>
-      <td><span style="color:#60a5fa">25</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-13.html')" class="report-row" data-file="daily-pretty-2026-04-13.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Apr 13</span></div></td>
-      <td><span style="color:#fbbf24">$1,368.70</span></td>
-      <td><span style="color:#60a5fa">34</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-12.html')" class="report-row" data-file="daily-pretty-2026-04-12.html">
-      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Apr 12</span></div></td>
-      <td><span style="color:#fbbf24">$41.16</span></td>
-      <td><span style="color:#60a5fa">3</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-11.html')" class="report-row" data-file="daily-pretty-2026-04-11.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Apr 11</span></div></td>
-      <td><span style="color:#fbbf24">$16.60</span></td>
-      <td><span style="color:#60a5fa">1</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-10.html')" class="report-row" data-file="daily-pretty-2026-04-10.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Apr 10</span></div></td>
-      <td><span style="color:#fbbf24">$750.00</span></td>
-      <td><span style="color:#60a5fa">13</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-09.html')" class="report-row" data-file="daily-pretty-2026-04-09.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Apr 9</span></div></td>
-      <td><span style="color:#fbbf24">$688.62</span></td>
-      <td><span style="color:#60a5fa">11</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-08.html')" class="report-row" data-file="daily-pretty-2026-04-08.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Apr 8</span></div></td>
-      <td><span style="color:#fbbf24">$858.26</span></td>
-      <td><span style="color:#60a5fa">9</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-07.html')" class="report-row" data-file="daily-pretty-2026-04-07.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Apr 7</span></div></td>
-      <td><span style="color:#fbbf24">$826.05</span></td>
-      <td><span style="color:#60a5fa">1</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-06.html')" class="report-row" data-file="daily-pretty-2026-04-06.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Apr 6</span></div></td>
-      <td><span style="color:#fbbf24">$1,049.17</span></td>
-      <td><span style="color:#60a5fa">6</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-05.html')" class="report-row" data-file="daily-pretty-2026-04-05.html">
-      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Apr 5</span></div></td>
-      <td><span style="color:#fbbf24">$30.43</span></td>
-      <td><span style="color:#60a5fa">1</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-04.html')" class="report-row" data-file="daily-pretty-2026-04-04.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Apr 4</span></div></td>
-      <td><span style="color:#fbbf24">$21.80</span></td>
-      <td><span style="color:#60a5fa">0</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-03.html')" class="report-row" data-file="daily-pretty-2026-04-03.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Apr 3</span></div></td>
-      <td><span style="color:#fbbf24">$441.77</span></td>
-      <td><span style="color:#60a5fa">4</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-02.html')" class="report-row" data-file="daily-pretty-2026-04-02.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Apr 2</span></div></td>
-      <td><span style="color:#fbbf24">$633.65</span></td>
-      <td><span style="color:#60a5fa">8</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-04-01.html')" class="report-row" data-file="daily-pretty-2026-04-01.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Apr 1</span></div></td>
-      <td><span style="color:#fbbf24">$761.15</span></td>
-      <td><span style="color:#60a5fa">7</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-31.html')" class="report-row" data-file="daily-pretty-2026-03-31.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Mar 31</span></div></td>
-      <td><span style="color:#fbbf24">$769.75</span></td>
-      <td><span style="color:#60a5fa">20</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-30.html')" class="report-row" data-file="daily-pretty-2026-03-30.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Mar 30</span></div></td>
-      <td><span style="color:#fbbf24">$495.57</span></td>
-      <td><span style="color:#60a5fa">13</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-29.html')" class="report-row" data-file="daily-pretty-2026-03-29.html">
-      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Mar 29</span></div></td>
-      <td><span style="color:#fbbf24">$4.88</span></td>
-      <td><span style="color:#60a5fa">1</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-28.html')" class="report-row" data-file="daily-pretty-2026-03-28.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Mar 28</span></div></td>
-      <td><span style="color:#fbbf24">—</span></td>
-      <td><span style="color:#60a5fa">0</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-27.html')" class="report-row" data-file="daily-pretty-2026-03-27.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Mar 27</span></div></td>
-      <td><span style="color:#fbbf24">$427.39</span></td>
-      <td><span style="color:#60a5fa">8</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-26.html')" class="report-row" data-file="daily-pretty-2026-03-26.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Mar 26</span></div></td>
-      <td><span style="color:#fbbf24">$436.89</span></td>
-      <td><span style="color:#60a5fa">14</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-25.html')" class="report-row" data-file="daily-pretty-2026-03-25.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Mar 25</span></div></td>
-      <td><span style="color:#fbbf24">$492.37</span></td>
-      <td><span style="color:#60a5fa">8</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-24.html')" class="report-row" data-file="daily-pretty-2026-03-24.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Mar 24</span></div></td>
-      <td><span style="color:#fbbf24">$612.05</span></td>
-      <td><span style="color:#60a5fa">10</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-23.html')" class="report-row" data-file="daily-pretty-2026-03-23.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Mar 23</span></div></td>
-      <td><span style="color:#fbbf24">$580.30</span></td>
-      <td><span style="color:#60a5fa">10</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-22.html')" class="report-row" data-file="daily-pretty-2026-03-22.html">
-      <td><div class="date-cell"><span class="day-name">Sun</span><span class="date-num">Mar 22</span></div></td>
-      <td><span style="color:#fbbf24">$3.28</span></td>
-      <td><span style="color:#60a5fa">0</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-21.html')" class="report-row" data-file="daily-pretty-2026-03-21.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Mar 21</span></div></td>
-      <td><span style="color:#fbbf24">—</span></td>
-      <td><span style="color:#60a5fa">0</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-20.html')" class="report-row" data-file="daily-pretty-2026-03-20.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Mar 20</span></div></td>
-      <td><span style="color:#fbbf24">$511.00</span></td>
-      <td><span style="color:#60a5fa">12</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-19.html')" class="report-row" data-file="daily-pretty-2026-03-19.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Mar 19</span></div></td>
-      <td><span style="color:#fbbf24">$368.72</span></td>
-      <td><span style="color:#60a5fa">10</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-18.html')" class="report-row" data-file="daily-pretty-2026-03-18.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Mar 18</span></div></td>
-      <td><span style="color:#fbbf24">$603.86</span></td>
-      <td><span style="color:#60a5fa">8</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-17.html')" class="report-row" data-file="daily-pretty-2026-03-17.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Mar 17</span></div></td>
-      <td><span style="color:#fbbf24">$374.00</span></td>
-      <td><span style="color:#60a5fa">6</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-16.html')" class="report-row" data-file="daily-pretty-2026-03-16.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Mar 16</span></div></td>
-      <td><span style="color:#fbbf24">$572.69</span></td>
-      <td><span style="color:#60a5fa">16</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-13.html')" class="report-row" data-file="daily-pretty-2026-03-13.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Mar 13</span></div></td>
-      <td><span style="color:#fbbf24">$584.57</span></td>
-      <td><span style="color:#60a5fa">6</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-12.html')" class="report-row" data-file="daily-pretty-2026-03-12.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Mar 12</span></div></td>
-      <td><span style="color:#fbbf24">$692.68</span></td>
-      <td><span style="color:#60a5fa">16</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-11.html')" class="report-row" data-file="daily-pretty-2026-03-11.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Mar 11</span></div></td>
-      <td><span style="color:#fbbf24">$1,021.88</span></td>
-      <td><span style="color:#60a5fa">15</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-10.html')" class="report-row" data-file="daily-pretty-2026-03-10.html">
-      <td><div class="date-cell"><span class="day-name">Tue</span><span class="date-num">Mar 10</span></div></td>
-      <td><span style="color:#fbbf24">$905.26</span></td>
-      <td><span style="color:#60a5fa">13</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-09.html')" class="report-row" data-file="daily-pretty-2026-03-09.html">
-      <td><div class="date-cell"><span class="day-name">Mon</span><span class="date-num">Mar 9</span></div></td>
-      <td><span style="color:#fbbf24">$949.83</span></td>
-      <td><span style="color:#60a5fa">20</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-07.html')" class="report-row" data-file="daily-pretty-2026-03-07.html">
-      <td><div class="date-cell"><span class="day-name">Sat</span><span class="date-num">Mar 7</span></div></td>
-      <td><span style="color:#fbbf24">—</span></td>
-      <td><span style="color:#60a5fa">0</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-06.html')" class="report-row" data-file="daily-pretty-2026-03-06.html">
-      <td><div class="date-cell"><span class="day-name">Fri</span><span class="date-num">Mar 6</span></div></td>
-      <td><span style="color:#fbbf24">$237.73</span></td>
-      <td><span style="color:#60a5fa">11</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-05.html')" class="report-row" data-file="daily-pretty-2026-03-05.html">
-      <td><div class="date-cell"><span class="day-name">Thu</span><span class="date-num">Mar 5</span></div></td>
-      <td><span style="color:#fbbf24">$309.15</span></td>
-      <td><span style="color:#60a5fa">3</span></td>
-    </tr>
-    <tr onclick="loadReport('daily-pretty-2026-03-04.html')" class="report-row" data-file="daily-pretty-2026-03-04.html">
-      <td><div class="date-cell"><span class="day-name">Wed</span><span class="date-num">Mar 4</span></div></td>
-      <td><span style="color:#fbbf24">$609.11</span></td>
-      <td><span style="color:#60a5fa">14</span></td>
-    </tr>
-    </tbody>
-    </table>
-  </div>
-
-  <div class="main-content">
-    <div class="report-header" id="report-title">
-      Loading: <span id="report-date-label">Tuesday, March 24, 2026</span>
-    </div>
-    <iframe id="report-frame" src="daily-pretty-2026-03-25.html"></iframe>
-  </div>
-</div>
-
-<script>
-function loadReport(filename) {
-  const frame = document.getElementById('report-frame');
-  frame.src = filename;
-  
-  // Update active state
-  document.querySelectorAll('.report-row').forEach(r => r.classList.remove('active'));
-  const row = document.querySelector(`[data-file="${filename}"]`);
-  if (row) row.classList.add('active');
-  
-  // Update header
-  const dateCell = row ? row.querySelector('.date-num').textContent : '';
-  const dayCell = row ? row.querySelector('.day-name').textContent : '';
-  document.getElementById('report-date-label').textContent = dayCell + ' ' + dateCell;
-}
-
-// Auto-select the first row
-document.addEventListener('DOMContentLoaded', () => {
-  const first = document.querySelector('.report-row');
-  if (first) first.classList.add('active');
-});
-</script>
-</body>
-</html>
+<!DOCTYPE html><html><head><title>FR44 Daily Reports</title></head><body>
+<h1>FR44 Daily Reports</h1><ul><li><a href="daily-pretty-2026-04-23.html">2026-04-23</a></li>
+<li><a href="daily-pretty-2026-04-22.html">2026-04-22</a></li>
+<li><a href="daily-pretty-2026-04-21.html">2026-04-21</a></li>
+<li><a href="daily-pretty-2026-04-20.html">2026-04-20</a></li>
+<li><a href="daily-pretty-2026-04-19.html">2026-04-19</a></li>
+<li><a href="daily-pretty-2026-04-18.html">2026-04-18</a></li>
+<li><a href="daily-pretty-2026-04-17.html">2026-04-17</a></li>
+<li><a href="daily-pretty-2026-04-16.html">2026-04-16</a></li>
+<li><a href="daily-pretty-2026-04-15.html">2026-04-15</a></li>
+<li><a href="daily-pretty-2026-04-14.html">2026-04-14</a></li>
+<li><a href="daily-pretty-2026-04-13.html">2026-04-13</a></li>
+<li><a href="daily-pretty-2026-04-12.html">2026-04-12</a></li>
+<li><a href="daily-pretty-2026-04-11.html">2026-04-11</a></li>
+<li><a href="daily-pretty-2026-04-10.html">2026-04-10</a></li>
+<li><a href="daily-pretty-2026-04-09.html">2026-04-09</a></li>
+<li><a href="daily-pretty-2026-04-08.html">2026-04-08</a></li>
+<li><a href="daily-pretty-2026-04-07.html">2026-04-07</a></li>
+<li><a href="daily-pretty-2026-04-06.html">2026-04-06</a></li>
+<li><a href="daily-pretty-2026-04-05.html">2026-04-05</a></li>
+<li><a href="daily-pretty-2026-04-04.html">2026-04-04</a></li>
+<li><a href="daily-pretty-2026-04-03.html">2026-04-03</a></li>
+<li><a href="daily-pretty-2026-04-02.html">2026-04-02</a></li>
+<li><a href="daily-pretty-2026-04-01.html">2026-04-01</a></li>
+<li><a href="daily-pretty-2026-03-31.html">2026-03-31</a></li>
+<li><a href="daily-pretty-2026-03-30.html">2026-03-30</a></li>
+<li><a href="daily-pretty-2026-03-29.html">2026-03-29</a></li>
+<li><a href="daily-pretty-2026-03-28.html">2026-03-28</a></li>
+<li><a href="daily-pretty-2026-03-27.html">2026-03-27</a></li>
+<li><a href="daily-pretty-2026-03-26.html">2026-03-26</a></li>
+<li><a href="daily-pretty-2026-03-25.html">2026-03-25</a></li>
+<li><a href="daily-pretty-2026-03-24.html">2026-03-24</a></li>
+<li><a href="daily-pretty-2026-03-23.html">2026-03-23</a></li>
+<li><a href="daily-pretty-2026-03-22.html">2026-03-22</a></li>
+<li><a href="daily-pretty-2026-03-21.html">2026-03-21</a></li>
+<li><a href="daily-pretty-2026-03-20.html">2026-03-20</a></li>
+<li><a href="daily-pretty-2026-03-19.html">2026-03-19</a></li>
+<li><a href="daily-pretty-2026-03-18.html">2026-03-18</a></li>
+<li><a href="daily-pretty-2026-03-17.html">2026-03-17</a></li>
+<li><a href="daily-pretty-2026-03-16.html">2026-03-16</a></li>
+<li><a href="daily-pretty-2026-03-13.html">2026-03-13</a></li>
+<li><a href="daily-pretty-2026-03-12.html">2026-03-12</a></li>
+<li><a href="daily-pretty-2026-03-11.html">2026-03-11</a></li>
+<li><a href="daily-pretty-2026-03-10.html">2026-03-10</a></li>
+<li><a href="daily-pretty-2026-03-09.html">2026-03-09</a></li>
+<li><a href="daily-pretty-2026-03-07.html">2026-03-07</a></li>
+<li><a href="daily-pretty-2026-03-06.html">2026-03-06</a></li>
+<li><a href="daily-pretty-2026-03-05.html">2026-03-05</a></li>
+<li><a href="daily-pretty-2026-03-04.html">2026-03-04</a></li></ul></body></html>
