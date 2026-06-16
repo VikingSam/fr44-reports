@@ -1,121 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FR44 Daily Reports</title>
+    <title>FR44 Daily Reports Archive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 2rem; background: #f5f5f5; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; border-bottom: 3px solid #FF6B35; padding-bottom: 0.5rem; }
-        .report-list { list-style: none; padding: 0; }
-        .report-list li { margin: 0.75rem 0; }
-        .report-list a { color: #FF6B35; text-decoration: none; font-weight: 500; }
-        .report-list a:hover { text-decoration: underline; }
-        .report-date { color: #666; font-size: 0.9rem; margin-left: 0.5rem; }
-        .updated { color: #999; font-size: 0.85rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; }
+        h1 { color: #333; }
+        .reports-list { list-style: none; padding: 0; }
+        .reports-list li { margin: 10px 0; }
+        .reports-list a { color: #0066cc; text-decoration: none; font-size: 16px; }
+        .reports-list a:hover { text-decoration: underline; }
+        .reports-list span { color: #666; font-size: 12px; margin-left: 10px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📊 FR44 Daily Reports</h1>
-        <ul class="report-list">
-        <li><a href="daily-pretty-2026-06-14.html">→ Sunday, June 14, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-13.html">→ Saturday, June 13, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-12.html">→ Friday, June 12, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-11.html">→ Thursday, June 11, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-10.html">→ Wednesday, June 10, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-09.html">→ Tuesday, June 09, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-08.html">→ Monday, June 08, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-07.html">→ Sunday, June 07, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-06.html">→ Saturday, June 06, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-04.html">→ Thursday, June 04, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-03.html">→ Wednesday, June 03, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-02.html">→ Tuesday, June 02, 2026</a></li>
-        <li><a href="daily-pretty-2026-06-01.html">→ Monday, June 01, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-31.html">→ Sunday, May 31, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-29.html">→ Friday, May 29, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-28.html">→ Thursday, May 28, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-27.html">→ Wednesday, May 27, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-26.html">→ Tuesday, May 26, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-25.html">→ Monday, May 25, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-24.html">→ Sunday, May 24, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-23.html">→ Saturday, May 23, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-22.html">→ Friday, May 22, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-21.html">→ Thursday, May 21, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-20.html">→ Wednesday, May 20, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-19.html">→ Tuesday, May 19, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-18.html">→ Monday, May 18, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-17.html">→ Sunday, May 17, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-15.html">→ Friday, May 15, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-14.html">→ Thursday, May 14, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-13.html">→ Wednesday, May 13, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-12.html">→ Tuesday, May 12, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-11.html">→ Monday, May 11, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-10.html">→ Sunday, May 10, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-08.html">→ Friday, May 08, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-07.html">→ Thursday, May 07, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-06.html">→ Wednesday, May 06, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-05.html">→ Tuesday, May 05, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-04.html">→ Monday, May 04, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-03.html">→ Sunday, May 03, 2026</a></li>
-        <li><a href="daily-pretty-2026-05-01.html">→ Friday, May 01, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-30.html">→ Thursday, April 30, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-29.html">→ Wednesday, April 29, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-28.html">→ Tuesday, April 28, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-27.html">→ Monday, April 27, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-26.html">→ Sunday, April 26, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-24.html">→ Friday, April 24, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-23.html">→ Thursday, April 23, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-22.html">→ Wednesday, April 22, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-21.html">→ Tuesday, April 21, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-20.html">→ Monday, April 20, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-19.html">→ Sunday, April 19, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-18.html">→ Saturday, April 18, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-17.html">→ Friday, April 17, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-16.html">→ Thursday, April 16, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-15.html">→ Wednesday, April 15, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-14.html">→ Tuesday, April 14, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-13.html">→ Monday, April 13, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-12.html">→ Sunday, April 12, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-11.html">→ Saturday, April 11, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-10.html">→ Friday, April 10, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-09.html">→ Thursday, April 09, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-08.html">→ Wednesday, April 08, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-07.html">→ Tuesday, April 07, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-06.html">→ Monday, April 06, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-05.html">→ Sunday, April 05, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-04.html">→ Saturday, April 04, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-03.html">→ Friday, April 03, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-02.html">→ Thursday, April 02, 2026</a></li>
-        <li><a href="daily-pretty-2026-04-01.html">→ Wednesday, April 01, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-31.html">→ Tuesday, March 31, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-30.html">→ Monday, March 30, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-29.html">→ Sunday, March 29, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-28.html">→ Saturday, March 28, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-27.html">→ Friday, March 27, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-26.html">→ Thursday, March 26, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-25.html">→ Wednesday, March 25, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-24.html">→ Tuesday, March 24, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-23.html">→ Monday, March 23, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-22.html">→ Sunday, March 22, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-21.html">→ Saturday, March 21, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-20.html">→ Friday, March 20, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-19.html">→ Thursday, March 19, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-18.html">→ Wednesday, March 18, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-17.html">→ Tuesday, March 17, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-16.html">→ Monday, March 16, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-13.html">→ Friday, March 13, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-12.html">→ Thursday, March 12, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-11.html">→ Wednesday, March 11, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-10.html">→ Tuesday, March 10, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-09.html">→ Monday, March 09, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-07.html">→ Saturday, March 07, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-06.html">→ Friday, March 06, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-05.html">→ Thursday, March 05, 2026</a></li>
-        <li><a href="daily-pretty-2026-03-04.html">→ Wednesday, March 04, 2026</a></li>
-        </ul>
-        <p class="updated">Last updated: 2026-06-15 16:01 UTC</p>
-    </div>
+    <h1>FR44 Daily Reports Archive</h1>
+    <p>Latest reports first.</p>
+    <ul class="reports-list">
+        <li><a href="daily-pretty-2026-06-15.html">2026-06-15</a></li>
+        <li><a href="daily-pretty-2026-06-14.html">2026-06-14</a></li>
+        <li><a href="daily-pretty-2026-06-13.html">2026-06-13</a></li>
+        <li><a href="daily-pretty-2026-06-12.html">2026-06-12</a></li>
+        <li><a href="daily-pretty-2026-06-11.html">2026-06-11</a></li>
+        <li><a href="daily-pretty-2026-06-10.html">2026-06-10</a></li>
+        <li><a href="daily-pretty-2026-06-09.html">2026-06-09</a></li>
+        <li><a href="daily-pretty-2026-06-08.html">2026-06-08</a></li>
+        <li><a href="daily-pretty-2026-06-07.html">2026-06-07</a></li>
+        <li><a href="daily-pretty-2026-06-06.html">2026-06-06</a></li>
+        <li><a href="daily-pretty-2026-06-04.html">2026-06-04</a></li>
+        <li><a href="daily-pretty-2026-06-03.html">2026-06-03</a></li>
+        <li><a href="daily-pretty-2026-06-02.html">2026-06-02</a></li>
+        <li><a href="daily-pretty-2026-06-01.html">2026-06-01</a></li>
+        <li><a href="daily-pretty-2026-05-31.html">2026-05-31</a></li>
+        <li><a href="daily-pretty-2026-05-29.html">2026-05-29</a></li>
+        <li><a href="daily-pretty-2026-05-28.html">2026-05-28</a></li>
+        <li><a href="daily-pretty-2026-05-27.html">2026-05-27</a></li>
+        <li><a href="daily-pretty-2026-05-26.html">2026-05-26</a></li>
+        <li><a href="daily-pretty-2026-05-25.html">2026-05-25</a></li>
+        <li><a href="daily-pretty-2026-05-24.html">2026-05-24</a></li>
+        <li><a href="daily-pretty-2026-05-23.html">2026-05-23</a></li>
+        <li><a href="daily-pretty-2026-05-22.html">2026-05-22</a></li>
+        <li><a href="daily-pretty-2026-05-21.html">2026-05-21</a></li>
+        <li><a href="daily-pretty-2026-05-20.html">2026-05-20</a></li>
+        <li><a href="daily-pretty-2026-05-19.html">2026-05-19</a></li>
+        <li><a href="daily-pretty-2026-05-18.html">2026-05-18</a></li>
+        <li><a href="daily-pretty-2026-05-17.html">2026-05-17</a></li>
+        <li><a href="daily-pretty-2026-05-15.html">2026-05-15</a></li>
+        <li><a href="daily-pretty-2026-05-14.html">2026-05-14</a></li>
+        <li><a href="daily-pretty-2026-05-13.html">2026-05-13</a></li>
+        <li><a href="daily-pretty-2026-05-12.html">2026-05-12</a></li>
+        <li><a href="daily-pretty-2026-05-11.html">2026-05-11</a></li>
+        <li><a href="daily-pretty-2026-05-10.html">2026-05-10</a></li>
+        <li><a href="daily-pretty-2026-05-08.html">2026-05-08</a></li>
+        <li><a href="daily-pretty-2026-05-07.html">2026-05-07</a></li>
+        <li><a href="daily-pretty-2026-05-06.html">2026-05-06</a></li>
+        <li><a href="daily-pretty-2026-05-05.html">2026-05-05</a></li>
+        <li><a href="daily-pretty-2026-05-04.html">2026-05-04</a></li>
+        <li><a href="daily-pretty-2026-05-03.html">2026-05-03</a></li>
+        <li><a href="daily-pretty-2026-05-01.html">2026-05-01</a></li>
+        <li><a href="daily-pretty-2026-04-30.html">2026-04-30</a></li>
+        <li><a href="daily-pretty-2026-04-29.html">2026-04-29</a></li>
+        <li><a href="daily-pretty-2026-04-28.html">2026-04-28</a></li>
+        <li><a href="daily-pretty-2026-04-27.html">2026-04-27</a></li>
+        <li><a href="daily-pretty-2026-04-26.html">2026-04-26</a></li>
+        <li><a href="daily-pretty-2026-04-24.html">2026-04-24</a></li>
+        <li><a href="daily-pretty-2026-04-23.html">2026-04-23</a></li>
+        <li><a href="daily-pretty-2026-04-22.html">2026-04-22</a></li>
+        <li><a href="daily-pretty-2026-04-21.html">2026-04-21</a></li>
+        <li><a href="daily-pretty-2026-04-20.html">2026-04-20</a></li>
+        <li><a href="daily-pretty-2026-04-19.html">2026-04-19</a></li>
+        <li><a href="daily-pretty-2026-04-18.html">2026-04-18</a></li>
+        <li><a href="daily-pretty-2026-04-17.html">2026-04-17</a></li>
+        <li><a href="daily-pretty-2026-04-16.html">2026-04-16</a></li>
+        <li><a href="daily-pretty-2026-04-15.html">2026-04-15</a></li>
+        <li><a href="daily-pretty-2026-04-14.html">2026-04-14</a></li>
+        <li><a href="daily-pretty-2026-04-13.html">2026-04-13</a></li>
+        <li><a href="daily-pretty-2026-04-12.html">2026-04-12</a></li>
+        <li><a href="daily-pretty-2026-04-11.html">2026-04-11</a></li>
+        <li><a href="daily-pretty-2026-04-10.html">2026-04-10</a></li>
+        <li><a href="daily-pretty-2026-04-09.html">2026-04-09</a></li>
+        <li><a href="daily-pretty-2026-04-08.html">2026-04-08</a></li>
+        <li><a href="daily-pretty-2026-04-07.html">2026-04-07</a></li>
+        <li><a href="daily-pretty-2026-04-06.html">2026-04-06</a></li>
+        <li><a href="daily-pretty-2026-04-05.html">2026-04-05</a></li>
+        <li><a href="daily-pretty-2026-04-04.html">2026-04-04</a></li>
+        <li><a href="daily-pretty-2026-04-03.html">2026-04-03</a></li>
+        <li><a href="daily-pretty-2026-04-02.html">2026-04-02</a></li>
+        <li><a href="daily-pretty-2026-04-01.html">2026-04-01</a></li>
+        <li><a href="daily-pretty-2026-03-31.html">2026-03-31</a></li>
+        <li><a href="daily-pretty-2026-03-30.html">2026-03-30</a></li>
+        <li><a href="daily-pretty-2026-03-29.html">2026-03-29</a></li>
+        <li><a href="daily-pretty-2026-03-28.html">2026-03-28</a></li>
+        <li><a href="daily-pretty-2026-03-27.html">2026-03-27</a></li>
+        <li><a href="daily-pretty-2026-03-26.html">2026-03-26</a></li>
+        <li><a href="daily-pretty-2026-03-25.html">2026-03-25</a></li>
+        <li><a href="daily-pretty-2026-03-24.html">2026-03-24</a></li>
+        <li><a href="daily-pretty-2026-03-23.html">2026-03-23</a></li>
+        <li><a href="daily-pretty-2026-03-22.html">2026-03-22</a></li>
+        <li><a href="daily-pretty-2026-03-21.html">2026-03-21</a></li>
+        <li><a href="daily-pretty-2026-03-20.html">2026-03-20</a></li>
+        <li><a href="daily-pretty-2026-03-19.html">2026-03-19</a></li>
+        <li><a href="daily-pretty-2026-03-18.html">2026-03-18</a></li>
+        <li><a href="daily-pretty-2026-03-17.html">2026-03-17</a></li>
+        <li><a href="daily-pretty-2026-03-16.html">2026-03-16</a></li>
+        <li><a href="daily-pretty-2026-03-13.html">2026-03-13</a></li>
+        <li><a href="daily-pretty-2026-03-12.html">2026-03-12</a></li>
+        <li><a href="daily-pretty-2026-03-11.html">2026-03-11</a></li>
+        <li><a href="daily-pretty-2026-03-10.html">2026-03-10</a></li>
+        <li><a href="daily-pretty-2026-03-09.html">2026-03-09</a></li>
+        <li><a href="daily-pretty-2026-03-07.html">2026-03-07</a></li>
+        <li><a href="daily-pretty-2026-03-06.html">2026-03-06</a></li>
+        <li><a href="daily-pretty-2026-03-05.html">2026-03-05</a></li>
+        <li><a href="daily-pretty-2026-03-04.html">2026-03-04</a></li>
+    </ul>
 </body>
 </html>
